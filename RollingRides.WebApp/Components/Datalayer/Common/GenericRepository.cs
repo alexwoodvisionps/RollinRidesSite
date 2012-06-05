@@ -14,7 +14,7 @@ namespace RollingRides.WebApp.Components.Datalayer.Common
 		
 		protected SqlConnection GetNewConnection()
 		{			
-			return new SqlConnection(ConfigurationManager.AppSettings["DbConn"]);
+			return new SqlConnection(ConfigurationManager.ConnectionStrings["DbConn"].ConnectionString);
 		}
 		public M GetById ( int id, string tableName, object prototype)
 		{

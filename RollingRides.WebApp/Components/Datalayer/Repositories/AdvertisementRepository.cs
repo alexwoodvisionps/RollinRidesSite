@@ -22,7 +22,7 @@ namespace RollingRides.WebApp.Components.Datalayer.Repositories
                                      new SqlParameter("@Url", StringHelper.RemovePossibleXSS(ad.DisplayObjectUrl)) 
                                  };
             ExecuteNonQuery(sql, parameters);
-            ad.Id = int.Parse(ExecuteQuery("SELECT @@IDENTITY").Rows[0][0].ToString());
+            //ad.Id = int.Parse(ExecuteQuery("SELECT @@IDENTITY").Rows[0][0].ToString());
             return ad;
         }
 

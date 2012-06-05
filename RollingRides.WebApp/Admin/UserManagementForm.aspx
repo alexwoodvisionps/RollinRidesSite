@@ -2,7 +2,13 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-<div>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#<%=txtExpiresOn.ClientID %>').datepicker();
+    });
+</script>
+
+    <div>
 <asp:Label ID="lblError" runat="server" />
 </div>
 <div>
@@ -24,7 +30,7 @@ Last Name: <asp:TextBox ID="txtLastName" runat="server" />
 Company Name: <asp:TextBox ID="txtCompanyName" runat="server" />
 </div>`
 <div>
-Password: <asp:TextBox ID="txtPassword" runat="server" />
+Password: <asp:TextBox TextMode="Password" ID="txtPassword" runat="server" />
 </div>
 <div>
 Joined On: <asp:Label ID="lblDateJoined" runat="server"/>

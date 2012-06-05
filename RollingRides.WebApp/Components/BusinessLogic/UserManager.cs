@@ -64,9 +64,14 @@ namespace RollingRides.WebApp.Components.BusinessLogic
 			return _userRepository.GetById (userId);
 		}
 
-	    public Datalayer.Models.User AddUpdate(Datalayer.Models.User user)
+	    public Datalayer.Models.User AddUpdate(Datalayer.Models.User user, UserType type = UserType.User)
 	    {
-	        return _userRepository.AddUpdate(user);
+	        return _userRepository.AddUpdate(user, type);
+	    }
+
+	    public void ChangePassword(int userId, string newPassword)
+	    {
+	        _userRepository.ChangePassword(userId, newPassword);
 	    }
 	}
 }

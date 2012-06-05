@@ -25,7 +25,14 @@ namespace RollingRides.WebApp.Components.Datalayer.Repositories
 			//return ((DataRow)dt.Rows [0]).DataRowToModel (new User ());
             return GetById(Id, "User", new RollingRides.WebApp.Components.Datalayer.Models.User());
 		}
-        public List<RollingRides.WebApp.Components.Datalayer.Models.User> GetAllUsers()
+
+	    public void ChangePassword(int userId, string newPassword)
+	    {
+	        var newPassHash = Convert.ToBase64String(new SHA256Cng().ComputeHash(Encoding.ASCII.GetBytes(newPassword)));
+	        ExecuteNonQuery("Update [User] Set [Password] = @pass WHERE Id = " + userId, new SqlParameter[]{new SqlParameter("@pass", newPassHash)});
+	    }
+
+	    public List<RollingRides.WebApp.Components.Datalayer.Models.User> GetAllUsers()
 		{
             return ExecuteQuery("SELECT * FROM [User]", null, CommandType.Text).DataTableToList<RollingRides.WebApp.Components.Datalayer.Models.User>(new RollingRides.WebApp.Components.Datalayer.Models.User());
 			
@@ -35,11 +42,11 @@ namespace RollingRides.WebApp.Components.Datalayer.Repositories
             var passwordHash = new SHA256Cng().ComputeHash(Encoding.ASCII.GetBytes(password));
             var paramList = new List<SqlParameter>
                                 {
-                                    new SqlParameter("@username", username),
+                                    new SqlParameter("@username", username.Trim()),
                                     new SqlParameter("@pass", Convert.ToBase64String(passwordHash))
 			                    };
             var dt = ExecuteQuery (
-				"SELECT * FROM [User] WHERE ToUpper(Username) = ToUpper(@username) AND [Password] = @pass",
+				"SELECT * FROM [User] WHERE Upper(Username) = Upper(@username) AND [Password] = @pass",
 				paramList
 			);
 			return dt.Rows.Count == 1 ? ((DataRow)dt.Rows[0]).DataRowToModel<RollingRides.WebApp.Components.Datalayer.Models.User>(new RollingRides.WebApp.Components.Datalayer.Models.User()) : null;
@@ -72,7 +79,7 @@ namespace RollingRides.WebApp.Components.Datalayer.Repositories
 				return newPassword;
 			return null;
 		}
-        public RollingRides.WebApp.Components.Datalayer.Models.User AddUpdate(RollingRides.WebApp.Components.Datalayer.Models.User user)
+        public RollingRides.WebApp.Components.Datalayer.Models.User AddUpdate(RollingRides.WebApp.Components.Datalayer.Models.User user, UserType type = UserType.User)
 		{
 			var dt = ExecuteQuery ("SELECT * FROM [User] WHERE Id = " + user.Id,null);
 			var sql = "";
@@ -81,7 +88,7 @@ namespace RollingRides.WebApp.Components.Datalayer.Repositories
             if(dt1.Rows.Count > 0 && user.Id < 1)
                 throw  new Exception("Email Address Already Used!");
 			if (dt.Rows.Count == 1) {
-				sql = "UPDATE [User] Set Street1 = @s1, Street2 = @s2, City = @city," +
+				sql = "UPDATE [User] Set Street1 = @s1, Street2 = @s2, City = @city, Expires = @expires, " +
 					"[state] =  @state, ZipCode = @zip, PhoneNumber = @phone, firstName = @first, lastName = @last, CompanyName = @Company" +
 					" WHERE Id = " + user.Id;
 				var paramList = new SqlParameter[]{
@@ -91,8 +98,10 @@ namespace RollingRides.WebApp.Components.Datalayer.Repositories
 					new SqlParameter ("@state", user.State),
 					new SqlParameter ("@zip", user.ZipCode),
 					new SqlParameter ("@phone", user.PhoneNumber),
+                    new SqlParameter("@expires",(type == UserType.Admin ?  (user.Expires.HasValue ? (object) user.Expires.Value.ToString("MM/dd/yyyy") : DBNull.Value) : DBNull.Value) ), 
 					//new SqlParameter ("@email", user.Email),
 					new SqlParameter ("@first", user.FirstName),
+                    new SqlParameter("@Company", user.CompanyName), 
 					new SqlParameter ("@last", user.LastName)
 				};
 				var rowsAffected = ExecuteNonQuery (sql, paramList);
@@ -106,8 +115,8 @@ namespace RollingRides.WebApp.Components.Datalayer.Repositories
 			if (dt.Rows.Count > 0)
 				throw new Exception ("Username already exists!");
 			sql = "INSERT INTO [User] (FirstName, LastName, Username, [Password], Street1, Street2, City, [State], " +
-				"ZipCode, Email, PhoneNumber, AccountType, DateJoined) Values (@first, @last, @username, @pass, @s1, @s2," +
-				"@city, @state, @zip, @email, @phone, @type, @dateJoined)";
+				"ZipCode, Email, PhoneNumber, AccountType, DateJoined, Expires) Values (@first, @last, @username, @pass, @s1, @s2," +
+				"@city, @state, @zip, @email, @phone, @type, @dateJoined, " + (type == UserType.Admin ?  (user.Expires.HasValue ? "'"+user.Expires.Value.ToString("MM/dd/yyyy") + "' " : "NULL ") : "NULL ")  + ")";
             var passwordHash =
                 Convert.ToBase64String(new SHA256Cng().ComputeHash(Encoding.ASCII.GetBytes(user.Password)));
             

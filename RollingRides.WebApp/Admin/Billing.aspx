@@ -5,7 +5,7 @@
 <div>
 Corporate Users That Should Be Billed:
 </div>
-<asp:GridView ID="gvUsers" runat="server" AllowSorting="true" AllowPaging="true" >
+<asp:GridView ID="gvUsers" runat="server" AllowSorting="true" AllowPaging="true" AutoGenerateColumns="false" >
     <Columns>
         <asp:BoundField DataField="FirstName" HeaderText="First Name" SortExpression="FirstName" />
         <asp:BoundField DataField="LastName" HeaderText="Last Name" SortExpression="LastName"/>

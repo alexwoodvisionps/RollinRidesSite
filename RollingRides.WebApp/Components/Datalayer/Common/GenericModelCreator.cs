@@ -11,14 +11,16 @@ namespace RollingRides.WebApp.Components.Datalayer.Common
 		public static List<M> DataTableToList<M> (this DataTable dt, object prototype)
 		{
 		    return (from DataRow dr in dt.Rows
-		            let obj = System.Reflection.Assembly.Load(prototype.GetType().AssemblyQualifiedName).CreateInstance(prototype.GetType().Name)
+		            let obj = System.Activator.CreateInstance(prototype.GetType())
 		            select DataRowToModel<M>(dr, obj)).ToList();
 		}
 		public static M DataRowToModel<M> (this DataRow dr, object model)
 		{
 			//object obj = System.Reflection.Assembly.GetExecutingAssembly ().CreateInstance (classString);
-			foreach (DataColumn col in dr.Table.Columns) {
-				AssignProperty (model, col.ColumnName, dr [col.ColumnName]);
+			foreach (DataColumn col in dr.Table.Columns)
+			{
+			    var val = dr[col.ColumnName] == DBNull.Value ? null : dr[col.ColumnName];
+				AssignProperty (model, col.ColumnName, val);
 			}
 			return (M) model;
 		}
@@ -31,7 +33,7 @@ namespace RollingRides.WebApp.Components.Datalayer.Common
 		private static void AssignProperty (object obj, string propertyName, object value)
 		{
 			if (HasProperty (obj, propertyName))
-				obj.GetType ().InvokeMember (propertyName, BindingFlags.Public | BindingFlags.SetProperty, 
+				obj.GetType ().InvokeMember (propertyName, BindingFlags.Public | BindingFlags.Default | BindingFlags.Instance | BindingFlags.SetProperty, 
 			                              Type.DefaultBinder, obj, new object[]{value});
 		}
 	}

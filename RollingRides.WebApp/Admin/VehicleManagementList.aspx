@@ -9,7 +9,7 @@
     }
 </script>
 
-<asp:GridView ID="gvAutos" runat="server" AutoGenerateColumns="false" AllowPaging="true" AllowSorting="true"  EmptyDataText="No Users">
+<asp:GridView ID="gvAutos" runat="server" AutoGenerateColumns="false" AllowPaging="true" AllowSorting="true"  EmptyDataText="No Vehicles">
     <Columns>
         
         <asp:BoundField DataField="Make" HeaderText="Make" SortExpression="Make"/>

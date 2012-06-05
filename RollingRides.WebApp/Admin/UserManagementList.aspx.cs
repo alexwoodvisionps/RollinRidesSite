@@ -8,6 +8,7 @@ using System.Web.UI.WebControls;
 using RollingRides.WebApp.Components.BusinessLogic;
 using RollingRides.WebApp.Components.BusinessLogic.Common;
 using RollingRides.WebApp.Components.BusinessLogic.Interfaces;
+using RollingRides.WebApp.Components.Datalayer.Models;
 
 namespace RollingRides.WebApp.Admin
 {
@@ -53,7 +54,7 @@ namespace RollingRides.WebApp.Admin
         protected void btnEdit_Click(object sender, EventArgs e)
         {
             var id = int.Parse(((Button) sender).CommandArgument);
-            Response.Redirect("~/Admin/UserManagementForm.aspx?id=" + id);
+            Response.Redirect("~/Admin/UserManagementForm.aspx?id=" + id, true);
         }
 
       
@@ -131,9 +132,20 @@ namespace RollingRides.WebApp.Admin
                                    Password = txtPassword.Text,
                                    Username = txtUsername.Text,
                                    Email = txtEmail.Text,
-                                   AccountType = int.Parse(ddlUserType.SelectedValue)
+                                   AccountType = int.Parse(ddlUserType.SelectedValue),
+                                   DateJoined = DateTime.Now,
+                                   State = "IL",
+                                   City = "",
+                                   ZipCode = "",
+                                   Street1 = "",
+                                   Street2 = "",
+                                   CompanyName = "",
+                                   Expires = ddlUserType.SelectedValue == ((int)UserType.Corporate).ToString() ? DateTime.Now.AddDays(31) : (DateTime?) null,
+                                   FirstName = "",
+                                   LastName = "",
+                                   PhoneNumber = ""
                                };
-                _userManager.AddUpdate(user);
+                _userManager.AddUpdate(user, UserType.Admin);
                 BindOriginalData();
                 BindData();
             }

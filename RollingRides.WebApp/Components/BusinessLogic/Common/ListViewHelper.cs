@@ -8,7 +8,7 @@ namespace RollingRides.WebApp.Components.BusinessLogic.Common
     {
         public static object GetProperty(this object obj, string name)
         {
-            return obj.GetType().InvokeMember(name, BindingFlags.GetProperty | BindingFlags.Public, Type.DefaultBinder, obj,
+            return obj.GetType().InvokeMember(name, BindingFlags.GetProperty | BindingFlags.Default | BindingFlags.Instance | BindingFlags.Public, Type.DefaultBinder, obj,
                                        null);
         }
         public static void FillAccountType(this DropDownList ddl, bool needHeaderLabel, UserType myLoggedInType)

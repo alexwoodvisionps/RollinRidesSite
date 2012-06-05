@@ -3,7 +3,7 @@
 <html lang="en">
   <head runat="server">
     <meta charset="utf-8"/>
-    <title>Bootstrap, from Twitter</title>
+    <title>Rollin Rides</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content="" />
     <meta name="author" content="" />
@@ -22,12 +22,12 @@
         
     <link href="/css/bootstrap-responsive.css" rel="Stylesheet" />
 
-    <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!-- The HTML5 shim, for IE6-8 support of HTML5 elements -->
     <!--[if lt IE 9]>
       <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
 
-    <!-- Le fav and touch icons -->
+    <!-- The fav and touch icons -->
     <link rel="shortcut icon" href="../assets/ico/favicon.ico" />
     <link rel="apple-touch-icon-precomposed" sizes="144x144" href="../assets/ico/apple-touch-icon-144-precomposed.png" />
     <link rel="apple-touch-icon-precomposed" sizes="114x114" href="../assets/ico/apple-touch-icon-114-precomposed.png" />
@@ -80,10 +80,10 @@
           <div class="well sidebar-nav">
             <ul class="nav nav-list">
               <li class="nav-header">Sidebar</li>
-              <li class="active"><a href="~/Default.aspx">Home</a></li>
-              <li><a href="#">Auto Listing</a></li>
-              <li><a href="#">Auto Search</a></li>
-              <li><a href="#">My Account</a></li>
+              <li class="active"><a href="/Default.aspx">Home</a></li>
+              <li><a href="/AutoListing.aspx">Auto Listing</a></li>
+              <li><a href="/AutoSearch.aspx">Auto Search</a></li>
+              <li><a href="/User/MyAccount.aspx">My Account</a></li>
               <li><asp:Literal ID="litSideAd" runat="server" /></li>
             </ul>
           </div><!--/.well -->

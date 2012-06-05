@@ -8,10 +8,11 @@ namespace RollingRides.WebApp.Components.Datalayer.Repositories.Interfaces
 		List<RollingRides.WebApp.Components.Datalayer.Models.User> GetAllUsers();
 		RollingRides.WebApp.Components.Datalayer.Models.User ValidateLogin(string username, string password);
 		string ResetPassword(string email, string newPassword);
-		RollingRides.WebApp.Components.Datalayer.Models.User AddUpdate(RollingRides.WebApp.Components.Datalayer.Models.User user);
+        RollingRides.WebApp.Components.Datalayer.Models.User AddUpdate(RollingRides.WebApp.Components.Datalayer.Models.User user, UserType type = UserType.User);
 		bool Delete(int id);
 		bool ChangePassword(int userId, string oldPassword, string newPassword); 
-		RollingRides.WebApp.Components.Datalayer.Models.User GetById(int Id);
+		RollingRides.WebApp.Components.Datalayer.Models.User GetById(int id);
+        void ChangePassword(int userId, string newPassword);
 	}
 }
 

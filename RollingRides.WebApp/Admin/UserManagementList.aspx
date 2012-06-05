@@ -2,7 +2,11 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-
+<script type="text/javascript">
+    function ConfirmIt() {
+        return confirm("Are you sure you want to delete this user?");
+    }
+</script>
 <asp:GridView ID="gvUsers" runat="server" AutoGenerateColumns="false" AllowPaging="true" AllowSorting="true"  EmptyDataText="No Users">
     <Columns>
         <asp:BoundField DataField="Username" HeaderText="Username" SortExpression="Username"/>
@@ -11,8 +15,8 @@
         <asp:BoundField DataField="FirstName" HeaderText="First Name" SortExpression="FirstName" />
         <asp:TemplateField>
             <ItemTemplate>
-                <asp:Button ID="btnEdit" runat="server" Text="Edit" CommandArgument='<%# DataBinder.Eval(Container, "Id") %>' OnClick="btnEdit_Click" />
-                <asp:Button ID="btnDelete" runat="server" Text="Delete" CommandArgument='<%# DataBinder.Eval(Container, "Id") %>' OnClick="btnDelete_Click" />
+                <asp:Button CausesValidation="false" ID="btnEdit" runat="server" Text="Edit" CommandArgument='<%# Eval("Id") %>' OnClick="btnEdit_Click" />
+                <asp:Button CausesValidation="false" OnClientClick="ConfirmIt()" ID="btnDelete" runat="server" Text="Delete" CommandArgument='<%# Eval("Id") %>' OnClick="btnDelete_Click" />
              </ItemTemplate>
         </asp:TemplateField>
     </Columns>

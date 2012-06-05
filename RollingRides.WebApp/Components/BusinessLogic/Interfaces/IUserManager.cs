@@ -16,7 +16,8 @@ namespace RollingRides.WebApp.Components.BusinessLogic.Interfaces
 		List<RollingRides.WebApp.Components.Datalayer.Models.User> GetAllUsers();
 		bool ChangePassword(int userId, string oldPassword, string newPassword); 
 		RollingRides.WebApp.Components.Datalayer.Models.User GetById(int Id);
-	    RollingRides.WebApp.Components.Datalayer.Models.User AddUpdate(RollingRides.WebApp.Components.Datalayer.Models.User user);
+	    RollingRides.WebApp.Components.Datalayer.Models.User AddUpdate(RollingRides.WebApp.Components.Datalayer.Models.User user, UserType type = UserType.User);
+	    void ChangePassword(int userId, string newPassword);
 	}
 }
 

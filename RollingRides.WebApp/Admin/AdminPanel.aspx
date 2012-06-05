@@ -15,4 +15,10 @@
 <div>
     <h2><asp:HyperLink runat="server" NavigateUrl="~/User/MyAccount.aspx" Text="My Account" /></h2>
 </div>
+<div>
+    <h2><asp:HyperLink runat="server" NavigateUrl="~/Admin/Billing.aspx" Text="Coporate Billing" /></h2>
+</div>
+<div>
+    <h2><asp:HyperLink runat="server" NavigateUrl="~/Admin/SiteManager.aspx" Text="Site Management" /></h2>
+</div>
 </asp:Content>

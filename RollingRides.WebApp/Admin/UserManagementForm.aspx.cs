@@ -50,7 +50,7 @@ namespace RollingRides.WebApp.Admin
             catch
             {
             }
-            txtPassword.Text = user.Password;
+            //txtPassword.Text = user.Password;
             txtZipCode.Text = user.ZipCode;
             txtStreet1.Text = user.Street1;
             txtStreet2.Text = user.Street2;
@@ -62,6 +62,7 @@ namespace RollingRides.WebApp.Admin
             txtCompanyName.Text = user.CompanyName;
             hfId.Value = user.Id.ToString();
             ddlAccountType.FillAccountType(false, ((RollingRides.WebApp.Components.Datalayer.Models.User)(Session["User"])).UserType);
+            ddlAccountType.SelectedValue = user.AccountType.ToString();
         }
 
         protected void btnCancel_Click(object sender, EventArgs e)
@@ -87,7 +88,8 @@ namespace RollingRides.WebApp.Admin
                                    State = ddlState.SelectedValue,
                                    Password = u1.UserType == UserType.Admin ? u1.Password : txtPassword.Text,
                                    CompanyName = txtCompanyName.Text,
-                                   AccountType = int.Parse(ddlAccountType.SelectedValue)
+                                   AccountType = int.Parse(ddlAccountType.SelectedValue),
+                                   City = txtCity.Text
 
                                };
 
@@ -109,10 +111,24 @@ namespace RollingRides.WebApp.Admin
             //copyUser.Expires = u1.UserType == UserType.Admin ? u1.Expires : strDate == null ? (DateTime?) null : DateTime.Parse(strDate);
            
             copyUser.Email = u1.UserType == UserType.Admin ? u1.Email : txtEmail.Text;
-            var use1 = _userManager.AddUpdate(copyUser);
+            var myself = (RollingRides.WebApp.Components.Datalayer.Models.User)Session["User"];
+            var use1 = _userManager.AddUpdate(copyUser, myself.UserType);
+            
+            if(myself.UserType == UserType.Admin)
+            {
+                if(!string.IsNullOrEmpty(txtPassword.Text))
+                {
+                    _userManager.ChangePassword(copyUser.Id, txtPassword.Text);
+                }
+
+            }
             if (use1 == null)
             {
                 lblError.Text = "Failed To Update User!";
+            }
+            else
+            {
+                lblError.Text = "User Successfully Updated!";
             }
         }
     }

@@ -14,30 +14,37 @@ namespace RollingRides.WebApp
         protected void Page_Load(object sender, EventArgs e)
         {
             var user = (RollingRides.WebApp.Components.Datalayer.Models.User) Session["User"];
-            if (user == null) return;
-            var name = user.Username;
-            if (user.LastName != null && user.FirstName != null)
-                name = user.FirstName + " " + user.LastName;
-            lblUsername.Text = "Hello "+ name;
             var adRepo = new AdvertisementRepository();
             var ad1 = adRepo.GetAdvertisement();
             var ad2 = adRepo.GetAdvertisement();
             var ad3 = adRepo.GetAdvertisement();
-            if(ad1 != null)
+            if (ad1 != null)
             {
                 litAd.Text = "<a href='" + ad1.Link + "' > <img src='" +
-                             ConfigurationManager.AppSettings["AdvertisementDir"] + ad1.DisplayObjectUrl + "' />";
+                              ad1.DisplayObjectUrl + "' /></a>";
             }
-            if(ad2 != null)
+            if (ad2 != null)
             {
                 litSideAd.Text = "<a href='" + ad2.Link + "' > <img src='" +
-                             ConfigurationManager.AppSettings["AdvertisementDir"] + ad2.DisplayObjectUrl + "' />";
+                              ad2.DisplayObjectUrl + "' /></a>";
             }
-            if(ad3 != null)
+            if (ad3 != null)
             {
                 litAd3.Text = "<a href='" + ad3.Link + "' > <img src='" +
-                             ConfigurationManager.AppSettings["AdvertisementDir"] + ad3.DisplayObjectUrl + "' />";
+                              ad3.DisplayObjectUrl + "' /></a>";
             }
+            if (user == null)
+            {
+                lblUsername.Text = "Hello Guest";
+                btnSignOut.Visible = false;
+                return;
+            }
+            var name = user.Username;
+            
+            if (user.LastName != null && user.FirstName != null)
+                name = user.FirstName + " " + user.LastName;
+            lblUsername.Text = "Hello "+ name;
+            
         }
         protected void SignOut(object sender, EventArgs ev)
         {

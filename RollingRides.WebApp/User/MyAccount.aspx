@@ -12,8 +12,9 @@
 Username: <asp:Label ID="lblUsername" runat="server" />
 </div>
 <div>
-Email: <asp:TextBox ID="txtEmail" runat="server" />
+Email: <asp:Label ID="lblEmail" runat="server" />
 </div>
+Account Expires On: <asp:Label ID="lblExpires" runat="server" />
 <div>
 Phone Number: <asp:TextBox ID="txtPhone" runat="server" />    
 </div>`
@@ -26,9 +27,7 @@ Last Name: <asp:TextBox ID="txtLastName" runat="server" />
 <div>
 Company Name: <asp:TextBox ID="txtCompanyName" runat="server" />
 </div>`
-<div>
-Password: <asp:TextBox ID="txtPassword" runat="server" TextMode="Password" />
-</div>
+
 <div>
 Account Expires: <asp:TextBox runat="server" ID="txtExpiresOn" />
 </div>

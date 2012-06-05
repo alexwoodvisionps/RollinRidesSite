@@ -2,11 +2,14 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-<script type="text/javascript">
+    <script type="text/javascript">
     function ConfirmIt() {
         return confirm("Are you sure you want to delete the advertisement?");
     }
 </script>
+<div>
+    <asp:Label ID="lblError" runat="server" Text="" />
+</div>
 <div>
     Settings Menu:
 </div>
@@ -66,7 +69,8 @@
   Upload Advertiser Graphic:  <asp:FileUpload ID="fuAdvertiser" runat="server" />
 </div>
 <div>
-    <asp:Button ID="btnAddAvertiser" runat="server" Text="Add New Advertiser" />
+    <asp:Button ID="btnAddAvertiser" runat="server" Text="Add New Advertiser" 
+        onclick="btnAddAvertiser_Click" />
 </div>
 </div>
 </asp:Content>

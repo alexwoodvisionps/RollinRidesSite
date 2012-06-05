@@ -25,7 +25,7 @@ namespace RollingRides.WebApp.Components.Datalayer.Repositories
             var parameters = new[]
                                  {
                                      new SqlParameter("@AboutUs", settings.AboutUsDescription),
-                                     new SqlParameter("@Fax", settings.CompanyFax), 
+                                     new SqlParameter("@Fax", settings.CompanyFax == null ? DBNull.Value : (object) settings.CompanyFax), 
                                      new SqlParameter("@Address", settings.Address),
                                      new SqlParameter("@CompanyLogoUrl", settings.CompanyLogoUrl),
                                      new SqlParameter("@Phone", settings.CompanyPhoneNumber),
@@ -33,7 +33,7 @@ namespace RollingRides.WebApp.Components.Datalayer.Repositories
                                      new SqlParameter("@Movie", settings.HomePageMovieUrl) 
                                  };
             const string sql = "INSERT INTO SETTINGS (AboutUsDescription, CompanyFax, Address, CompanyLogoUrl, CompanyPhoneNumber, CouponOfTheMonthUrl, HomePageMovieUrl)" +
-                               " VALUES(@AboutUs, @Fax, @Addess, @CompanyLogoUrl, @Phone, @Coupon, @Movie)";
+                               " VALUES(@AboutUs, @Fax, @Address, @CompanyLogoUrl, @Phone, @Coupon, @Movie)";
             ExecuteNonQuery(sql, parameters);
         }
     }
