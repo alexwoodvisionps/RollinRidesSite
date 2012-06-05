@@ -1,0 +1,4 @@
+C:\AlexTest\PRivate\RollingRides.WebApp\RollingRides.WebApp\bin\RollingRides.WebApp.dll
+C:\AlexTest\PRivate\RollingRides.WebApp\RollingRides.WebApp\bin\RollingRides.WebApp.pdb
+C:\AlexTest\PRivate\RollingRides.WebApp\RollingRides.WebApp\obj\Debug\RollingRides.WebApp.dll
+C:\AlexTest\PRivate\RollingRides.WebApp\RollingRides.WebApp\obj\Debug\RollingRides.WebApp.pdb

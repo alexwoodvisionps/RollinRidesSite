@@ -1,0 +1,212 @@
+<Configuration>
+  <SettingsComponent>
+    <string />
+    <integer />
+    <boolean>
+      <setting name="livetemplates.csharp.usevar">True</setting>
+      <setting name="SolutionAnalysisEnabled">False</setting>
+    </boolean>
+  </SettingsComponent>
+  <RecentFiles>
+    <RecentFiles>
+      <File id="F9EBAD61-151A-4092-904F-2410415F7BE7/d:Components/d:Datalayer/d:Models/f:Automobile.cs" caret="1002" fromTop="15" />
+      <File id="F9EBAD61-151A-4092-904F-2410415F7BE7/d:Components/d:BusinessLogic/d:Interfaces/f:IUserManager.cs" caret="945" fromTop="12" />
+      <File id="F9EBAD61-151A-4092-904F-2410415F7BE7/d:User/f:User.Master.cs" caret="215" fromTop="9" />
+      <File id="F9EBAD61-151A-4092-904F-2410415F7BE7/d:Components/d:Datalayer/d:Models/f:UserType.cs" caret="157" fromTop="7" />
+      <File id="F9EBAD61-151A-4092-904F-2410415F7BE7/d:User/f:MyVehicles.aspx.designer.cs" caret="406" fromTop="11" />
+      <File id="F9EBAD61-151A-4092-904F-2410415F7BE7/d:User/f:MyVehicles.aspx.cs" caret="249" fromTop="10" />
+      <File id="F9EBAD61-151A-4092-904F-2410415F7BE7/d:Components/d:Datalayer/d:Repositories/d:Interfaces/f:IUserRepository.cs" caret="294" fromTop="8" />
+      <File id="F9EBAD61-151A-4092-904F-2410415F7BE7/d:User/f:MyAccount.aspx.designer.cs" caret="406" fromTop="11" />
+      <File id="F9EBAD61-151A-4092-904F-2410415F7BE7/d:User/f:MyAccount.aspx.cs" caret="248" fromTop="10" />
+      <File id="F9EBAD61-151A-4092-904F-2410415F7BE7/d:Components/d:Datalayer/d:Repositories/d:Interfaces/f:IAutomobileRepository.cs" caret="273" fromTop="7" />
+      <File id="F9EBAD61-151A-4092-904F-2410415F7BE7/d:Components/d:BusinessLogic/f:UserManager.cs" caret="1014" fromTop="16" />
+      <File id="F9EBAD61-151A-4092-904F-2410415F7BE7/d:Components/d:Datalayer/d:Common/f:GenericModelCreator.cs" caret="1177" fromTop="18" />
+      <File id="d:Miscellaneous Files/f:GenericRepository.cs/l:C!?src?Vision?Vision.Common.Infrastructure?Repositories?GenericRepository.cs" caret="0" fromTop="0" />
+      <File id="F9EBAD61-151A-4092-904F-2410415F7BE7/d:Components/d:BusinessLogic/d:Interfaces/f:IAutomobileManager.cs" caret="1129" fromTop="24" />
+      <File id="F9EBAD61-151A-4092-904F-2410415F7BE7/d:Components/d:Datalayer/d:Common/f:GenericRepository.cs" caret="1684" fromTop="26" />
+      <File id="F9EBAD61-151A-4092-904F-2410415F7BE7/d:Components/d:Datalayer/d:Repositories/f:UserRepository.cs" caret="5922" fromTop="21" />
+      <File id="F9EBAD61-151A-4092-904F-2410415F7BE7/d:Components/d:Datalayer/d:Repositories/f:AutomobileRepository.cs" caret="7071" fromTop="14" />
+      <File id="F9EBAD61-151A-4092-904F-2410415F7BE7/d:Components/d:Datalayer/d:Models/f:Movie.cs" caret="396" fromTop="13" />
+      <File id="F9EBAD61-151A-4092-904F-2410415F7BE7/d:Components/d:Datalayer/d:Models/f:Image.cs" caret="480" fromTop="14" />
+      <File id="F9EBAD61-151A-4092-904F-2410415F7BE7/d:Components/d:BusinessLogic/d:Common/f:StringHelper.cs" caret="1575" fromTop="15" />
+      <File id="F9EBAD61-151A-4092-904F-2410415F7BE7/d:Components/d:Datalayer/d:Models/f:User.cs" caret="144" fromTop="8" />
+      <File id="F9EBAD61-151A-4092-904F-2410415F7BE7/d:Components/d:BusinessLogic/f:AutomobileManager.cs" caret="3731" fromTop="26" />
+      <File id="F9EBAD61-151A-4092-904F-2410415F7BE7/f:AutoListing.aspx" caret="0" fromTop="0" />
+      <File id="F9EBAD61-151A-4092-904F-2410415F7BE7/f:AutoDetail.aspx" caret="0" fromTop="0" />
+      <File id="F9EBAD61-151A-4092-904F-2410415F7BE7/f:AutoListing.aspx.cs" caret="211" fromTop="9" />
+      <File id="F9EBAD61-151A-4092-904F-2410415F7BE7/f:Default.aspx" caret="333" fromTop="4" />
+      <File id="F9EBAD61-151A-4092-904F-2410415F7BE7/f:Site.Master" caret="982" fromTop="16" />
+      <File id="F9EBAD61-151A-4092-904F-2410415F7BE7/f:Web.config" caret="691" fromTop="18" />
+      <File id="F9EBAD61-151A-4092-904F-2410415F7BE7/f:Login.aspx" caret="390" fromTop="7" />
+      <File id="F9EBAD61-151A-4092-904F-2410415F7BE7/f:Login.aspx.cs" caret="1222" fromTop="20" />
+    </RecentFiles>
+    <RecentEdits>
+      <File id="F9EBAD61-151A-4092-904F-2410415F7BE7/d:Components/d:Datalayer/d:Repositories/f:UserRepository.cs" caret="5482" fromTop="11" />
+      <File id="F9EBAD61-151A-4092-904F-2410415F7BE7/d:Components/d:Datalayer/d:Repositories/f:UserRepository.cs" caret="5907" fromTop="21" />
+      <File id="F9EBAD61-151A-4092-904F-2410415F7BE7/d:Components/d:BusinessLogic/f:AutomobileManager.cs" caret="3700" fromTop="15" />
+      <File id="F9EBAD61-151A-4092-904F-2410415F7BE7/d:Components/d:Datalayer/d:Repositories/f:AutomobileRepository.cs" caret="7069" fromTop="14" />
+      <File id="F9EBAD61-151A-4092-904F-2410415F7BE7/d:Components/d:Datalayer/d:Models/f:Movie.cs" caret="566" fromTop="12" />
+      <File id="F9EBAD61-151A-4092-904F-2410415F7BE7/d:Components/d:Datalayer/d:Models/f:Movie.cs" caret="300" fromTop="12" />
+      <File id="F9EBAD61-151A-4092-904F-2410415F7BE7/d:Components/d:Datalayer/d:Models/f:Image.cs" caret="548" fromTop="14" />
+      <File id="F9EBAD61-151A-4092-904F-2410415F7BE7/d:Components/d:Datalayer/d:Models/f:Image.cs" caret="474" fromTop="14" />
+      <File id="F9EBAD61-151A-4092-904F-2410415F7BE7/d:Components/d:Datalayer/d:Models/f:User.cs" caret="830" fromTop="16" />
+      <File id="F9EBAD61-151A-4092-904F-2410415F7BE7/d:Components/d:BusinessLogic/d:Common/f:StringHelper.cs" caret="2937" fromTop="14" />
+      <File id="F9EBAD61-151A-4092-904F-2410415F7BE7/d:Components/d:BusinessLogic/d:Common/f:StringHelper.cs" caret="1574" fromTop="15" />
+      <File id="F9EBAD61-151A-4092-904F-2410415F7BE7/d:Components/d:Datalayer/d:Models/f:User.cs" caret="144" fromTop="8" />
+      <File id="F9EBAD61-151A-4092-904F-2410415F7BE7/d:Components/d:BusinessLogic/f:AutomobileManager.cs" caret="2987" fromTop="14" />
+      <File id="F9EBAD61-151A-4092-904F-2410415F7BE7/f:Web.config" caret="652" fromTop="15" />
+      <File id="F9EBAD61-151A-4092-904F-2410415F7BE7/d:Components/d:BusinessLogic/f:AutomobileManager.cs" caret="3434" fromTop="25" />
+      <File id="F9EBAD61-151A-4092-904F-2410415F7BE7/d:Components/d:BusinessLogic/f:AutomobileManager.cs" caret="3756" fromTop="26" />
+      <File id="F9EBAD61-151A-4092-904F-2410415F7BE7/f:AutoListing.aspx" caret="0" fromTop="0" />
+      <File id="F9EBAD61-151A-4092-904F-2410415F7BE7/f:AutoDetail.aspx" caret="0" fromTop="0" />
+      <File id="F9EBAD61-151A-4092-904F-2410415F7BE7/f:AutoListing.aspx.cs" caret="211" fromTop="9" />
+      <File id="F9EBAD61-151A-4092-904F-2410415F7BE7/f:Site.Master" caret="1282" fromTop="21" />
+      <File id="F9EBAD61-151A-4092-904F-2410415F7BE7/f:Site.Master" caret="1107" fromTop="21" />
+      <File id="F9EBAD61-151A-4092-904F-2410415F7BE7/f:Site.Master" caret="980" fromTop="16" />
+      <File id="F9EBAD61-151A-4092-904F-2410415F7BE7/f:Web.config" caret="207" fromTop="11" />
+      <File id="F9EBAD61-151A-4092-904F-2410415F7BE7/f:Web.config" caret="205" fromTop="8" />
+      <File id="F9EBAD61-151A-4092-904F-2410415F7BE7/f:Login.aspx" caret="512" fromTop="10" />
+      <File id="F9EBAD61-151A-4092-904F-2410415F7BE7/f:Login.aspx" caret="535" fromTop="12" />
+      <File id="F9EBAD61-151A-4092-904F-2410415F7BE7/f:Login.aspx.cs" caret="796" fromTop="14" />
+      <File id="F9EBAD61-151A-4092-904F-2410415F7BE7/f:Login.aspx.cs" caret="558" fromTop="13" />
+      <File id="F9EBAD61-151A-4092-904F-2410415F7BE7/f:Login.aspx.cs" caret="533" fromTop="16" />
+      <File id="F9EBAD61-151A-4092-904F-2410415F7BE7/f:Login.aspx.cs" caret="1222" fromTop="20" />
+    </RecentEdits>
+  </RecentFiles>
+  <NAntValidationSettings>
+    <NAntPath value="" />
+  </NAntValidationSettings>
+  <UnitTestRunner>
+    <Providers />
+  </UnitTestRunner>
+  <UnitTestRunnerNUnit>
+    <NUnitInstallDir IsNull="False">
+    </NUnitInstallDir>
+    <UseAddins>Never</UseAddins>
+  </UnitTestRunnerNUnit>
+  <CompletionStatisticsManager>
+    <ItemStatistics item="Default">
+      <Item value="this" priority="4" />
+      <Item value="Session" priority="1" />
+      <Item value="if" priority="8" />
+      <Item value="user" priority="5" />
+      <Item value="is" priority="0" />
+      <Item value="Response" priority="4" />
+      <Item value="return" priority="3" />
+      <Item value="var" priority="4" />
+      <Item value="using" priority="0" />
+      <Item value="RollingRides.WebApp" priority="0" />
+      <Item value="Components" priority="4" />
+      <Item value="Datalayer" priority="4" />
+      <Item value="Models" priority="7" />
+      <Item value="User`0" priority="3" />
+      <Item value="WebApp" priority="1" />
+      <Item value="null" priority="3" />
+      <Item value="UserType`0" priority="3" />
+      <Item value="M`0" priority="1" />
+      <Item value="int" priority="4" />
+      <Item value="SingleOrDefault`1" priority="0" />
+      <Item value="x" priority="0" />
+      <Item value="en" priority="0" />
+      <Item value="true" priority="0" />
+      <Item value="Binder`0" priority="6" />
+      <Item value="BindingFlags`0" priority="0" />
+      <Item value="binder" priority="0" />
+      <Item value="DataTableNewRowEventArgs`0" priority="0" />
+      <Item value="System" priority="1" />
+      <Item value="Reflection" priority="1" />
+      <Item value="ReflectionContext`0" priority="0" />
+      <Item value="TypeAttributes`0" priority="0" />
+      <Item value="autos" priority="0" />
+      <Item value="Default`0" priority="0" />
+      <Item value="object" priority="0" />
+      <Item value="where" priority="0" />
+      <Item value="Automobile`0" priority="0" />
+      <Item value="User" priority="1" />
+      <Item value="out" priority="2" />
+      <Item value="IEnumerable" priority="1" />
+      <Item value="imgsdeleted" priority="2" />
+      <Item value="List" priority="0" />
+      <Item value="Image`0" priority="0" />
+      <Item value="foreach" priority="0" />
+      <Item value="image" priority="1" />
+      <Item value="MediaType`0" priority="0" />
+      <Item value="FileStyleUriParser`0" priority="0" />
+      <Item value="img" priority="2" />
+      <Item value="Directory`0" priority="1" />
+      <Item value="Configuration`0" priority="0" />
+      <Item value="lastSlash" priority="0" />
+      <Item value="Login" priority="0" />
+      <Item value="e" priority="3" />
+      <Item value="loginFrm" priority="3" />
+      <Item value="public" priority="0" />
+      <Item value="Login`0" priority="0" />
+      <Item value="private" priority="0" />
+      <Item value="static" priority="0" />
+      <Item value="readonly" priority="0" />
+      <Item value="_userManager" priority="1" />
+      <Item value="new" priority="0" />
+      <Item value="IUserManager`0" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:RollingRides.WebApp.User.User">
+      <Item value="Session" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Web.HttpResponse">
+      <Item value="Redirect`0" priority="3" />
+      <Item value="Write`0" priority="0" />
+      <Item value="StatusCode" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:RollingRides.WebApp.Admin.Admin">
+      <Item value="Session" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:RollingRides.WebApp.Components.Datalayer.Models.User">
+      <Item value="UserType" priority="1" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@RollingRides.WebApp.Components.Datalayer.Models.UserType">
+      <Item value="Admin" priority="1" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Reflection.PropertyInfo">
+      <Item value="Name" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@System.Type">
+      <Item value="DefaultBinder" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:RollingRides.WebApp.Components.Datalayer.Models.Image">
+      <Item value="MediaType" priority="0" />
+      <Item value="Url" priority="3" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@RollingRides.WebApp.Components.Datalayer.Models.MediaType">
+      <Item value="Youtube" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@System.IO.File">
+      <Item value="Delete`0" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@System.Configuration.ConfigurationManager">
+      <Item value="AppSettings" priority="1" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.String">
+      <Item value="LastIndexOf`0" priority="0" />
+      <Item value="Substring`0" priority="0" />
+      <Item value="Length" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@System.IO.Directory">
+      <Item value="Exists`0" priority="0" />
+      <Item value="CreateDirectory`0" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:RollingRides.WebApp.Login">
+      <Item value="loginFrm" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Web.UI.WebControls.Login">
+      <Item value="Authenticate" priority="0" />
+      <Item value="FailureText" priority="0" />
+      <Item value="UserName" priority="0" />
+      <Item value="Password" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Web.UI.WebControls.AuthenticateEventArgs">
+      <Item value="Authenticated" priority="3" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:RollingRides.WebApp.Components.BusinessLogic.Interfaces.IUserManager">
+      <Item value="ValidateLogin`0" priority="0" />
+    </ItemStatistics>
+  </CompletionStatisticsManager>
+</Configuration>
