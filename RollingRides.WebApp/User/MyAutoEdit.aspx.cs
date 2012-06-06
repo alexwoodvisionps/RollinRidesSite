@@ -24,6 +24,10 @@ namespace RollingRides.WebApp.User
         {
             if(!IsPostBack)
             {
+                for (var i = DateTime.Now.Year + 1; i > 1919; i--)
+                {
+                    ddlYear.Items.Add(new ListItem(i.ToString(), i.ToString()));
+                }
                 if(!string.IsNullOrEmpty(Request.QueryString["id"]))
                 {
                     var auto = _autoManager.GetById(int.Parse(Request.QueryString["id"]));
@@ -34,10 +38,7 @@ namespace RollingRides.WebApp.User
                     txtStreet2.Text = auto.Street2;
                     txtMake.Text = auto.Make;
                     txtModel.Text = auto.Model;
-                    for(var i = 1920; i <= DateTime.Now.Year; i++)
-                    {
-                        ddlYear.Items.Add(new ListItem(i.ToString(),i.ToString()));
-                    }
+                   
                     ddlYear.SelectedValue = auto.Year.ToString();
                     txtPhoneNumber.Text = auto.PhoneNumber?? auto.Seller.PhoneNumber;
                     txtDescription.Text = auto.Description;
@@ -55,6 +56,10 @@ namespace RollingRides.WebApp.User
             {
                 var auto = _autoManager.GetById(id);
                 BindOldImages(auto.Images);
+            }
+            else
+            {
+                lblId.Text = "N/A";
             }
         }
         private void BindOldImages(IEnumerable<RollingRides.WebApp.Components.Datalayer.Models.Image> images)
@@ -173,8 +178,9 @@ namespace RollingRides.WebApp.User
                 {
                     if(StringHelper.IsValidCarFax(file.FileName))
                     {
-                        auto.CarfaxReportPath = ConfigurationManager.AppSettings["CarfaxPathUrl"] + Guid.NewGuid().ToString() + file.FileName;
-                        fuCarFax.SaveAs(ConfigurationManager.AppSettings["CarfaxPathUrl"] + Guid.NewGuid().ToString() + file.FileName);
+                        var theG = Guid.NewGuid();
+                        auto.CarfaxReportPath = ConfigurationManager.AppSettings["CarfaxPathUrl"] + theG.ToString() + file.FileName;
+                        fuCarFax.SaveAs(ConfigurationManager.AppSettings["CarfaxPathUrl"] + theG.ToString() + file.FileName);
                         continue;
                         
                     }

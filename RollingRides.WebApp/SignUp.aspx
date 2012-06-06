@@ -5,6 +5,7 @@
 <div>
     <asp:Label runat="server" ID="lblError" />
 </div>
+
 <div>
   Username:  <asp:TextBox ID="txtUsername" runat="server" />
 </div>
@@ -97,6 +98,9 @@ State:
 </div>
 <div>
 Zip Code: <asp:TextBox ID="txtZipCode" runat="server" />
+</div>
+<div> 
+    By using this site, you agree to the <a href="/TermsAndConditions.aspx">Terms and Conditions</a> of using this site.
 </div>
 <div>
     <asp:Button runat="server" Text="Create Account" ID="btnSave" OnClick="CreateAccount" />

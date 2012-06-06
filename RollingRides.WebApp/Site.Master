@@ -108,7 +108,13 @@
 
       <footer>
         <asp:Literal ID="litAd3" runat="server" />
+        <div>
+        By using this site, you agree to the <a href="/TermsAndConditions.aspx">Terms and Conditions</a> of using this site.
+        </div>
         <p>&copy; Rolling Rides <%= DateTime.Now.Year %></p>
+        <p>
+            &copy; Wooden Software Development Inc <%= DateTime.Now.Year %> 
+        </p>
       </footer>
 
     </div><!--/.fluid-container-->

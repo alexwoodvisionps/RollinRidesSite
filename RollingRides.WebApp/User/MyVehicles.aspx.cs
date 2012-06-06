@@ -22,6 +22,11 @@ namespace RollingRides.WebApp.User
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (!IsPostBack)
+            {
+                ViewState["sortDirection"] = "ASC";
+                ViewState["sortField"] = "Make";
+            }
             
             BindData();
             gvAutos.Sorting += new GridViewSortEventHandler(gvAutos_Sorting);

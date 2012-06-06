@@ -31,18 +31,40 @@ namespace RollingRides.WebApp.User
                 txtPhone.Text = user.PhoneNumber;
                 txtLastName.Text = user.LastName;
                 lblEmail.Text = user.Email;
-                
+                if (user.State != null)
+                    ddlState.SelectedValue = user.State;
+                if(user.Expires.HasValue)
+                {
+                    lblExpires.Text = user.Expires.Value.ToString("MM/dd/yyyy");
+                }
+                else
+                {
+                    lblExpires.Text = "Never";
+                }
             }
         }
 
         protected void btnSave_Click(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
+            try
+            {
+                var user = (RollingRides.WebApp.Components.Datalayer.Models.User) Session["User"];
+                user.Street1 = txtStreet1.Text;
+                user.Street2 = txtStreet2.Text;
+                user.City = txtCity.Text;
+                user.State = ddlState.SelectedValue;
+                user.ZipCode = txtZipCode.Text;
+                user.LastName = txtLastName.Text;
+                user.FirstName = txtFirstName.Text;
+                user.CompanyName = txtCompanyName.Text;
+                _userManager.AddUpdate(user, user.UserType);
+            }
+            catch (Exception ex)
+            {
+                lblError.Text = "Failed To Save your information, please contact the site administrator." + ex.Message;
+            }
         }
 
-        protected void btnCancel_Click(object sender, EventArgs e)
-        {
-            throw new NotImplementedException();
-        }
+       
     }
 }
