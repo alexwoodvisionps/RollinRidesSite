@@ -14,5 +14,7 @@
 <div>
     Address: <asp:Label ID="lblAddress" runat="server" />
 </div>
-
+<div>
+    Site Administrator Email: <asp:Label ID="lblEmail" runat="server" />
+</div>
 </asp:Content>

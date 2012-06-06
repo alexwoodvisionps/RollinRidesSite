@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Configuration;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -100,6 +101,30 @@ namespace RollingRides.WebApp.Admin
                 if(settings.CouponOfTheMonthUrl == null)
                     settings.CouponOfTheMonthUrl = "";
             }
+            if(!string.IsNullOrWhiteSpace(txtSiteMasterEmail.Text))
+            {
+                if (StringHelper.IsValidEmail(txtSiteMasterEmail.Text))
+                    settings.SiteMasterEmail = txtSiteMasterEmail.Text;
+                else
+                {
+                    lblError.Text = "Site Administrator Email Address is invalid!";
+                }
+                
+            }
+            else
+            {
+                if (settings.SiteMasterEmail == null)
+                    settings.SiteMasterEmail = "";
+            }
+            if(!string.IsNullOrEmpty(txtTerms.Text))
+            {
+                settings.TermsAndConditions = txtTerms.Text;
+            }
+            else
+            {
+                if (settings.TermsAndConditions == null)
+                    settings.TermsAndConditions = "";
+            }
             _settingRepository.Save(settings);
             lblError.Text = "Settings Successfully Updated!";
             BindAds();
@@ -111,6 +136,21 @@ namespace RollingRides.WebApp.Admin
             fuAdvertiser.SaveAs(Server.MapPath(ConfigurationManager.AppSettings["AdvertisementDir"]) + fuAdvertiser.FileName);
             lblError.Text = "Advertiser Successfully Added";
             BindAds();
+        }
+
+        protected void btnDownload_Click(object sender, EventArgs e)
+        {
+            var settings = _settingRepository.GetSettings();
+            if (settings == null || settings.HomePageMovieUrl == null)
+                return;
+            Response.Clear();
+            //var ms = new MemoryStream(stringBytes);
+            Response.ContentType = "text/csv";
+            Response.AddHeader("content-disposition", "attachment;filename=" + settings.HomePageMovieUrl.Substring(settings.HomePageMovieUrl.LastIndexOf("/"), settings.HomePageMovieUrl.Length - settings.HomePageMovieUrl.LastIndexOf("/")));
+            Response.Buffer = true;
+            //ms.WriteTo(httpContext.Response.OutputStream);
+            Response.TransmitFile((settings.HomePageMovieUrl));
+            Response.End();   
         }
     }
 }

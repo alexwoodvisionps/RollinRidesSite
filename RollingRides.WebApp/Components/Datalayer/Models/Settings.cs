@@ -15,6 +15,7 @@ namespace RollingRides.WebApp.Components.Datalayer.Models
         public string HomePageMovieUrl { get; set; }
         public string CouponOfTheMonthUrl { get; set; }
         public string CompanyFax { get; set; }
-
+        public string SiteMasterEmail { get; set; }
+        public string TermsAndConditions { get; set; }
     }
 }

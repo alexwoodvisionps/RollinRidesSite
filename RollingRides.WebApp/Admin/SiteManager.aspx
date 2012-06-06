@@ -20,6 +20,9 @@
     Contact Phone: <asp:TextBox ID="txtPhone" runat="server" />
 </div>
 <div>
+    Site Master Email Address: <asp:TextBox ID="txtSiteMasterEmail" runat="server" />
+</div>
+<div>
     Contact Fax: <asp:TextBox ID="txtFax" runat="server" />
 </div>
 <div>
@@ -29,7 +32,11 @@
     About Us Description: <asp:TextBox MaxLength="2000" runat="server" TextMode="MultiLine" ID="txtDescription" Width="300" Height="500" />
 </div>
 <div>
-    Home Page Movie: <asp:Button ID="btnDownload" runat="server" Text="Download Movie" Visible="false" /> <asp:FileUpload ID="fuMovie" runat="server" />
+    Terms And Conditions: <asp:TextBox ID="txtTerms" runat="server" TextMode="MultiLine" MaxLength="7000" Width="300" Height="300" />
+</div>
+<div>
+    Home Page Movie: <asp:Button ID="btnDownload" runat="server" 
+        Text="Download Movie" Visible="false" onclick="btnDownload_Click" /> <asp:FileUpload ID="fuMovie" runat="server" />
 </div>
 <div>
     Rollin Rides Company Address: <asp:TextBox MaxLength="500" ID="txtAddress" runat="server" TextMode="MultiLine" Width="200" Height="200" />

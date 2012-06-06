@@ -96,6 +96,7 @@
     <Content Include="Login.aspx" />
     <Content Include="ResetPassword.aspx" />
     <Content Include="SignUp.aspx" />
+    <Content Include="TermsAndConditions.aspx" />
     <Content Include="User\ChangePassword.aspx" />
     <Content Include="User\MyAccount.aspx" />
     <Content Include="User\MyAutoEdit.aspx" />
@@ -266,6 +267,13 @@
     </Compile>
     <Compile Include="Site.Master.designer.cs">
       <DependentUpon>Site.Master</DependentUpon>
+    </Compile>
+    <Compile Include="TermsAndConditions.aspx.cs">
+      <DependentUpon>TermsAndConditions.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="TermsAndConditions.aspx.designer.cs">
+      <DependentUpon>TermsAndConditions.aspx</DependentUpon>
     </Compile>
     <Compile Include="User\ChangePassword.aspx.cs">
       <DependentUpon>ChangePassword.aspx</DependentUpon>

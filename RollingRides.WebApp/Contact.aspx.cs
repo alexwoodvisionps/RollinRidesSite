@@ -18,9 +18,10 @@ namespace RollingRides.WebApp
                 var settings = settingRepo.GetSettings();
                 if (settings == null)
                     return;
-                lblPhoneNumber.Text = settings.CompanyPhoneNumber;
-                lblFax.Text = settings.CompanyFax;
-                lblAddress.Text = settings.Address;
+                lblPhoneNumber.Text = settings.CompanyPhoneNumber ?? "";
+                lblFax.Text = settings.CompanyFax ?? "";
+                lblAddress.Text = settings.Address ?? "";
+                lblEmail.Text = settings.SiteMasterEmail ?? "";
             }
         }
     }
