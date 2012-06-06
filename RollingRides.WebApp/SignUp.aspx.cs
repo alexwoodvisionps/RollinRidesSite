@@ -20,6 +20,11 @@ namespace RollingRides.WebApp
         }
         protected void CreateAccount(object sender, EventArgs e)
         {
+            if (!cbxAgree.Checked)
+            {
+                lblError.Text = "You must agree to the terms and conditions!";
+                return;
+            }
             var userManager = new UserManager();
             if(txtPassword.Text != txtPasswordConfirm.Text)
             {
@@ -33,6 +38,7 @@ namespace RollingRides.WebApp
                                          txtLastName.Text,
                                          txtStreet1.Text, txtStreet2.Text, txtCity.Text, ddlState.SelectedValue,
                                          txtZipCode.Text, UserType.User, txtCompanyName.Text);
+                lblError.Text = "<strong>Account Sucessfully Created! Click <a href='/Login.aspx' >here</a> To Login</strong>";
             }
             catch(Exception ex)
             {

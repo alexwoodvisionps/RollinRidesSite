@@ -103,6 +103,9 @@ Zip Code: <asp:TextBox ID="txtZipCode" runat="server" />
     By using this site, you agree to the <a href="/TermsAndConditions.aspx">Terms and Conditions</a> of using this site.
 </div>
 <div>
+    <asp:CheckBox ID="cbxAgree" runat="server" Text="I Agree" />
+</div>
+<div>
     <asp:Button runat="server" Text="Create Account" ID="btnSave" OnClick="CreateAccount" />
 </div>
 </asp:Content>

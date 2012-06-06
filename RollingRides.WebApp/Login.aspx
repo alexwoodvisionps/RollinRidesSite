@@ -9,11 +9,11 @@
     });
 </script>
 <div>
-<div style="float: left">
+<div>
 <asp:Login ID="loginFrm" runat="server" RememberMeSet="false" FailureText="Username or Password is Incorrect" PasswordRecoveryUrl="~/ResetPassword.aspx" PasswordRecoveryText="Reset Password">
 </asp:Login>
 </div>
-<div style="float: right">
+<div>
 <h2>
     <asp:HyperLink ID="ToSignUp" NavigateUrl="~/SignUp.aspx" runat="server" Text="Sign Up" ></asp:HyperLink>
 </h2>

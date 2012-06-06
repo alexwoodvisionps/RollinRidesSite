@@ -14,6 +14,11 @@ namespace RollingRides.WebApp
         protected void Page_Load(object sender, EventArgs e)
         {
             var user = (RollingRides.WebApp.Components.Datalayer.Models.User) Session["User"];
+            var settings = new SettingsRepository().GetSettings();
+            if(settings != null)
+            {
+                companyLogo.ImageUrl = settings.CompanyLogoUrl;
+            }
             var adRepo = new AdvertisementRepository();
             var ad1 = adRepo.GetAdvertisement();
             var ad2 = adRepo.GetAdvertisement();

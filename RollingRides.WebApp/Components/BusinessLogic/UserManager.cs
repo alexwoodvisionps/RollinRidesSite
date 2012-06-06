@@ -22,6 +22,7 @@ namespace RollingRides.WebApp.Components.BusinessLogic
 		{
 			var user = new Components.Datalayer.Models.User();
 			user.AccountType =(int) type;
+            user.Username = username; 
 			user.City = city;
 			user.DateJoined = DateTime.Now;
 			user.Email = email;
@@ -29,7 +30,7 @@ namespace RollingRides.WebApp.Components.BusinessLogic
 			user.Expires = null;
 			user.FirstName = firstName;
 			user.LastName = lastName;
-			user.Id = -1;
+			//user.Id = -1;
 			user.State = state;
 			user.Street1 = street1;
 			user.Street2 = street2;

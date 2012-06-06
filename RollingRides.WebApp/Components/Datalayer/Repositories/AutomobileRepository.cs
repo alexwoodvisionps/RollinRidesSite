@@ -31,7 +31,7 @@ namespace RollingRides.WebApp.Components.Datalayer.Repositories
 	    public void DeleteImage(int id)
 	    {
 	        var completePath = ConfigurationManager.AppSettings["MediaPath"];
-	        var dt = ExecuteQuery("SELECT * FROM Images WHERE Id = " + id).DataTableToList<Image>(new RollingRides.WebApp.Components.Datalayer.Models.Image());
+	        var dt = ExecuteQuery("SELECT * FROM Image WHERE Id = " + id).DataTableToList<Image>(new RollingRides.WebApp.Components.Datalayer.Models.Image());
             if(dt.Count > 0)
             {
                 if(dt.Single().Type == (int) MediaType.Image || dt.Single().Type == (int) MediaType.Server)
@@ -55,7 +55,7 @@ namespace RollingRides.WebApp.Components.Datalayer.Repositories
 				sql = "UPDATE Automobile Set ContactName = @cname, Make = @make, Model = @model," +
 					"Street1 = @s1, Street2 = @s2, City = @city, [State] = @state, " +
 					"ZipCode = @zip, year = @year, description = @des, Title = @title," +
-					"PhoneNumber = @phone, CarfaxReportPath = @report, IsUsed = @used, HasFinancing =  " + mobile.HasFinancing + ", MinimumDownPayment = " + (mobile.MinimumDownPayment.HasValue ? mobile.MinimumDownPayment.Value.ToString() : "NULL") + (type == UserType.Admin ? "IsHighlight = @h1 " : "") + "WHERE Id = " + mobile.Id;
+                    "PhoneNumber = @phone, Pricing = @price, MinimumDownPayment = @minpayment, HasFinancing = @financing,CarfaxReportPath = @report, IsUsed = @used, HasFinancing =  " + mobile.HasFinancing + ", MinimumDownPayment = " + (mobile.MinimumDownPayment.HasValue ? mobile.MinimumDownPayment.Value.ToString() : "NULL") + (type == UserType.Admin ? "IsHighlight = @h1 " : "") + (type == UserType.Admin ? ", IsApproved = @approved" : "") + "WHERE Id = " + mobile.Id;
 				var paramList = type == UserType.Admin ? new SqlParameter[]{
 					new SqlParameter("@cname", mobile.ContactName), 
                     new SqlParameter ("@make", mobile.Make),
@@ -69,9 +69,13 @@ namespace RollingRides.WebApp.Components.Datalayer.Repositories
 					new SqlParameter ("@des", mobile.Description),
 					new SqlParameter ("@title", mobile.Title),
 					new SqlParameter ("@phone", mobile.PhoneNumber),
+                    new SqlParameter ("@minpayment", mobile.MinimumDownPayment),
+                    new SqlParameter ("@financing", mobile.HasFinancing),
+                    new SqlParameter ("@price", mobile.Price), 
 					new SqlParameter ("@report", mobile.CarfaxReportPath),
 					new SqlParameter ("@used", mobile.IsUsed),
-					new SqlParameter ("@h1", mobile.IsHighlight)
+					new SqlParameter ("@h1", mobile.IsHighlight),
+                    new SqlParameter("@approved", mobile.IsApproved) 
 				} : new[]{
 					new SqlParameter("@cname", mobile.ContactName), 
                     new SqlParameter ("@make", mobile.Make),
@@ -85,7 +89,10 @@ namespace RollingRides.WebApp.Components.Datalayer.Repositories
 					new SqlParameter ("@des", mobile.Description),
 					new SqlParameter ("@title", mobile.Title),
 					new SqlParameter ("@phone", mobile.PhoneNumber),
-					new SqlParameter ("@report", mobile.CarfaxReportPath),
+                    new SqlParameter ("@minpayment", mobile.MinimumDownPayment),
+                    new SqlParameter ("@financing", mobile.HasFinancing),
+                    new SqlParameter ("@price", mobile.Price),
+                    new SqlParameter ("@report", mobile.CarfaxReportPath),
 					new SqlParameter ("@used", mobile.IsUsed)
 				};
 				var rowsAffected = ExecuteNonQuery (sql, paramList);
@@ -93,9 +100,9 @@ namespace RollingRides.WebApp.Components.Datalayer.Repositories
 			}
 			sql = "INSERT INTO Automobile(Make, Model, Street1, Street2," +
 				"City, [State], ZipCode, Year, Description, Title, " +
-				"PhoneNumber, CarfaxReportPath, UserId, ContactName) Values(" +
+				"PhoneNumber, CarfaxReportPath, UserId, ContactName, IsUsed, IsApproved, Price, MinimumDownPayment, HasFianancing) Values(" +
 				"@make, @model, @s1, @s2, @city, @state, @zip, @year, @des," +
-				"@title, @phone, @report, @userId, @cname)";
+				"@title, @phone, @report, @userId, @cname, @used, @approved, @price, @minpayment, @financing)";
 			var paramList2 = new SqlParameter[]{
 					new SqlParameter ("@make", mobile.Make),
 					new SqlParameter ("@model", mobile.Model),
@@ -110,11 +117,15 @@ namespace RollingRides.WebApp.Components.Datalayer.Repositories
 					new SqlParameter ("@phone", mobile.PhoneNumber),
 					new SqlParameter ("@report", mobile.CarfaxReportPath),
 					new SqlParameter ("@userId", mobile.UserId),
-                    new SqlParameter("@cname", mobile.ContactName) 
+                    new SqlParameter("@cname", mobile.ContactName),
+                    new SqlParameter ("@used", mobile.IsUsed),
+                    new SqlParameter("@approved", mobile.IsApproved),
+                     new SqlParameter ("@minpayment", mobile.MinimumDownPayment),
+                    new SqlParameter ("@financing", mobile.HasFinancing),
+                    new SqlParameter ("@price", mobile.Price)
 				};
 			var rowsAffected2 = ExecuteNonQuery (sql, paramList2);
-			dt = ExecuteQuery ("SELECT Scope_Identity()");
-			mobile.Id = (int) dt.Rows [0] [0];
+			
 			return rowsAffected2 == 1 ? mobile : null;
 		}
 		public bool Delete (int id, out List<Image> imgsDeleted)
@@ -177,7 +188,7 @@ namespace RollingRides.WebApp.Components.Datalayer.Repositories
 		}
 		public List<Image> GetImagesByAutoId (int autoId, bool onlyMainImage)
 		{
-			var sql = "SELECT * FROM Images WHERE AutomobileId = " + autoId;
+			var sql = "SELECT * FROM Image WHERE AutomobileId = " + autoId;
 			if (onlyMainImage) {
 				sql += " AND IsMainImage = 1";
 			}
@@ -186,7 +197,7 @@ namespace RollingRides.WebApp.Components.Datalayer.Repositories
 		public int AddImages (List<Image> images)
 		{
 		    return (from img in images
-		            let sql = "INSERT INTO Images(Url, Type, IsMainImage, AutomobileId) Values(@url, @type, @IsMain, @AutoId)"
+		            let sql = "INSERT INTO Image(Url, Type, IsMainImage, AutomobileId) Values(@url, @type, @IsMain, @AutoId)"
 		            let paramList = new SqlParameter[]
 		                                {
 		                                    new SqlParameter("@url", img.Url), new SqlParameter("@type", img.IsMainImage), new SqlParameter("@IsMain", img.IsMainImage), new SqlParameter("@AutoId", img.AutomobileId)
@@ -196,7 +207,7 @@ namespace RollingRides.WebApp.Components.Datalayer.Repositories
 		public bool DeleteImages (int autoId, out List<Image> imgsDeleted)
 		{
 			imgsDeleted = GetImagesByAutoId (autoId, true);
-			return ExecuteNonQuery ("DELETE FROM IMAGES WHERE AUTOMOBILEID = " + autoId) > 0;
+			return ExecuteNonQuery ("DELETE FROM IMAGE WHERE AUTOMOBILEID = " + autoId) > 0;
 		}
 		public List<Automobile> GetByUserId (int userId)
 		{

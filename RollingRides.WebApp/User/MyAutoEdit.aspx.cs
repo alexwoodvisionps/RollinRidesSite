@@ -49,6 +49,11 @@ namespace RollingRides.WebApp.User
                                                  ? StringHelper.FormatCurrency(auto.MinimumDownPayment.Value)
                                                  : "N/A";
                     ddlState.SelectedValue = auto.State;
+                    txtPrice.Text = auto.Price.ToString();
+                    txtMinDownPayment.Text = auto.MinimumDownPayment.ToString();
+                    cbxFianacing.Checked = auto.HasFinancing == 1;
+                    cbxUsed.Checked = auto.IsUsed == 1;
+                    cbxUserMyInfo.Visible = false;
                 }
             }
             int id;
@@ -70,7 +75,7 @@ namespace RollingRides.WebApp.User
                 {
                     imgMainImage.ImageUrl = ConfigurationManager.AppSettings["imagesFolder"] +  img.Url;
                     imgMainImage.Visible = true;
-                    fuMainImage.Visible = false;
+                    //fuMainImage.Visible = false;
                 }
                 switch (img.Type)
                 {
@@ -141,6 +146,7 @@ namespace RollingRides.WebApp.User
             auto.UserId = user.Id;
             auto.HasFinancing = cbxFianacing.Checked ? 1 : 0;
             auto.IsHighlight = 0;
+            auto.Year = int.Parse(ddlYear.SelectedValue);
             if(cbxUserMyInfo.Checked)
             {
                 auto.Street1 = user.Street1;
@@ -173,14 +179,20 @@ namespace RollingRides.WebApp.User
             {
                 if(auto.Images == null)
                     auto.Images = new List<Components.Datalayer.Models.Image>();
-                auto.Images.Add(imgYoutube);
-                foreach (HttpPostedFile file in Request.Files)
+                if(!string.IsNullOrEmpty(imgYoutube.Url))
+                    auto.Images.Add(imgYoutube);
+                foreach (var file in
+                    Request.Files.AllKeys.Select(fileStr => Request.Files[fileStr]).Where(file => file.ContentLength <= 5000000))
                 {
+                    
+                    
+                    if (string.IsNullOrEmpty(file.FileName))
+                        continue;
                     if(StringHelper.IsValidCarFax(file.FileName))
                     {
                         var theG = Guid.NewGuid();
                         auto.CarfaxReportPath = ConfigurationManager.AppSettings["CarfaxPathUrl"] + theG.ToString() + file.FileName;
-                        fuCarFax.SaveAs(ConfigurationManager.AppSettings["CarfaxPathUrl"] + theG.ToString() + file.FileName);
+                        fuCarFax.SaveAs(Server.MapPath(ConfigurationManager.AppSettings["CarfaxPathUrl"]) + theG.ToString() + file.FileName);
                         continue;
                         
                     }
@@ -190,7 +202,7 @@ namespace RollingRides.WebApp.User
                     var img = new RollingRides.WebApp.Components.Datalayer.Models.Image
                                   {
                                       Type = (int) fileType,
-                                      IsMainImage = 0,
+                                      IsMainImage = file.FileName == fuMainImage.FileName ? 1 : 0,
                                       Url = ConfigurationManager.AppSettings["imagesFolder"] + theGuid + StringHelper.MakeFileSafe(file.FileName)
                                   };
                     if(fileType == MediaType.Server)
@@ -203,7 +215,7 @@ namespace RollingRides.WebApp.User
                     }
                     auto.Images.Add(img);
 
-                    file.SaveAs(ConfigurationManager.AppSettings["imagesFolder"] + theGuid + StringHelper.MakeFileSafe(file.FileName));
+                    file.SaveAs(Server.MapPath(ConfigurationManager.AppSettings["imagesFolder"]) + theGuid + StringHelper.MakeFileSafe(file.FileName));
                 }
             }
             catch(Exception ex)
@@ -211,7 +223,18 @@ namespace RollingRides.WebApp.User
                 lblError.Text = ex.Message;
                 return;
             }
-            _autoManager.AddUpdate(auto, user.UserType);
+            if (auto.CarfaxReportPath == null)
+                auto.CarfaxReportPath = "";
+            try
+            {
+                var temp = _autoManager.AddUpdate(auto, user.UserType);
+                if (temp == null)
+                    lblError.Text = "Failed to Save Vehicle Please Try Again.";
+            }
+            catch(Exception ex)
+            {
+                lblError.Text = "<strong>Missing Required Fields Failed To Save Vehicle</strong>";
+            }
             //foreach (HttpPostedFile file in Request.Files)
             //{
             //    file.SaveAs(ConfigurationManager.AppSettings["imagesFolder"] + file.FileName);

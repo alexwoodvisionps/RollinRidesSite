@@ -58,16 +58,22 @@
               <span class="caret"></span>
             </div>
             <ul class="dropdown-menu">
-              <li><a href="~/User/MyAccount.aspx">Profile</a></li>
+              <li><a href="/User/MyAccount.aspx">My Profile</a></li>
               <li class="divider"></li>
-              <li><asp:Button ID="btnSignOut" runat="server" OnClick="SignOut" /></li>
+              <li><asp:LinkButton ID="btnSignOut" runat="server" Text="Sign Out" OnClick="SignOut" /></li>
             </ul>
           </div>
           <div class="nav-collapse">
             <ul class="nav">
               <li class="active"><a href="~/Default.aspx">Home</a></li>
-              <li><a href="~/About.aspx">About</a></li>
-              <li><a href="~/Contact.aspx">Contact</a></li>
+              <li><a href="/Login.aspx">Login</a></li>
+              <li><a href="/SignUp.aspx">Sign Up</a></li>
+              <li><a href="/About.aspx">About</a></li>
+              <li><a href="/Contact.aspx">Contact</a></li>
+              <li><a href="/AutoListing.aspx">Auto Listing</a></li>
+              <li><a href="/AutoSearch.aspx">Auto Search</a></li>
+              <li><a href="/User/MyAccount.aspx">My Account</a></li>
+              <li><a href="/User/MyVehicles.aspx">My Vehicles</a></li>
             </ul>
           </div><!--/.nav-collapse -->
         </div>
@@ -92,8 +98,8 @@
           
             
     
-    <asp:Image ID="companyLogo" runat="server" />
-    <asp:Literal ID="litAd" runat="server" />
+    <div><asp:Image ID="companyLogo" runat="server" Width="400" Height="50" /></div>
+    <div><asp:Literal ID="litAd" runat="server" /></div>
     <div>
         <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
         

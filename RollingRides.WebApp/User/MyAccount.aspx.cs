@@ -29,6 +29,7 @@ namespace RollingRides.WebApp.User
                 txtStreet1.Text = user.Street1;
                 txtCompanyName.Text = user.CompanyName;
                 txtPhone.Text = user.PhoneNumber;
+                txtFirstName.Text = user.FirstName;
                 txtLastName.Text = user.LastName;
                 lblEmail.Text = user.Email;
                 if (user.State != null)

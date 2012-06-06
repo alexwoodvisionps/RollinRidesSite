@@ -30,10 +30,12 @@ namespace RollingRides.WebApp.Components.Datalayer.Repositories
                                      new SqlParameter("@CompanyLogoUrl", settings.CompanyLogoUrl),
                                      new SqlParameter("@Phone", settings.CompanyPhoneNumber),
                                      new SqlParameter("@Coupon", settings.CouponOfTheMonthUrl),
-                                     new SqlParameter("@Movie", settings.HomePageMovieUrl) 
+                                     new SqlParameter("@Movie", settings.HomePageMovieUrl), 
+                                     new SqlParameter("@Email", settings.SiteMasterEmail),
+                                     new SqlParameter("@terms", settings.TermsAndConditions), 
                                  };
-            const string sql = "INSERT INTO SETTINGS (AboutUsDescription, CompanyFax, Address, CompanyLogoUrl, CompanyPhoneNumber, CouponOfTheMonthUrl, HomePageMovieUrl)" +
-                               " VALUES(@AboutUs, @Fax, @Address, @CompanyLogoUrl, @Phone, @Coupon, @Movie)";
+            const string sql = "INSERT INTO SETTINGS (SiteMasterEmail,TermsAndConditions,AboutUsDescription, CompanyFax, Address, CompanyLogoUrl, CompanyPhoneNumber, CouponOfTheMonthUrl, HomePageMovieUrl)" +
+                               " VALUES(@Email, @terms, @AboutUs, @Fax, @Address, @CompanyLogoUrl, @Phone, @Coupon, @Movie)";
             ExecuteNonQuery(sql, parameters);
         }
     }

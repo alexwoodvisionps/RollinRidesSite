@@ -40,6 +40,14 @@ namespace RollingRides.WebApp.Admin
                         txtAddress.Text = settings.Address;
                     if (!string.IsNullOrEmpty(settings.CompanyLogoUrl))
                         imgCurrentLogo.ImageUrl = settings.CompanyLogoUrl;
+                    if (!string.IsNullOrEmpty(settings.SiteMasterEmail))
+                        txtSiteMasterEmail.Text = settings.SiteMasterEmail;
+                    if (!string.IsNullOrEmpty(settings.TermsAndConditions))
+                        txtTerms.Text = settings.TermsAndConditions;
+                    if (!string.IsNullOrEmpty(settings.HomePageMovieUrl))
+                        btnDownload.Visible = true;
+                    if (!string.IsNullOrEmpty(settings.CouponOfTheMonthUrl))
+                        btnDownloadCoupon.Visible = true;
                 }
              
             }

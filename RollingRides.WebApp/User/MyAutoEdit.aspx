@@ -4,7 +4,7 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <script type="text/javascript">
     $(document).ready(function () { 
-        $('#' + <%=cbxUserMyInfo.ClientID %>).click(function(){
+        $('#<%=cbxUserMyInfo.ClientID %>').click(function(){
             if($(this).checked)
             {
                 $('#ContactPanel').hide();
@@ -147,7 +147,8 @@ Youtube Video Link: <asp:TextBox ID="txtYoutube" runat="server" />
     Previous Video: <asp:Label ID="lblVideo" runat="server" /> 
 </div>
 <div>
-  Car Video File: <asp:FileUpload ID="fuVideo" runat="server" />
+
+  Car Video File: <asp:FileUpload ID="fuVideo" runat="server" />  (5mb max)
 </div>
 <div>
 Main Image: <asp:Image runat="server" ID="imgMainImage" Visible="false" />
@@ -159,7 +160,7 @@ Main Image: <asp:Image runat="server" ID="imgMainImage" Visible="false" />
 <asp:Panel ID="pnlOldImages" runat="server" />
 
 
-<div id="imgContainer" runat="server">
+<div id="imgContainer">
 
 </div>
 <div>

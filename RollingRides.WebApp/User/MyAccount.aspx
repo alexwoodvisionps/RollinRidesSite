@@ -26,10 +26,6 @@ Last Name: <asp:TextBox ID="txtLastName" runat="server" />
 </div>`
 <div>
 Company Name: <asp:TextBox ID="txtCompanyName" runat="server" />
-</div>`
-
-<div>
-Account Expires: <asp:TextBox runat="server" ID="txtExpiresOn" />
 </div>
 <div>
 Street1: <asp:TextBox ID="txtStreet1" runat="server" />
