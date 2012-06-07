@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Configuration;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -79,9 +80,10 @@ namespace RollingRides.WebApp.User
             {
                 if(img.IsMainImage == 1)
                 {
-                    imgMainImage.ImageUrl = ConfigurationManager.AppSettings["imagesFolder"] +  img.Url;
+                    imgMainImage.ImageUrl = img.Url;
                     imgMainImage.Visible = true;
                     //fuMainImage.Visible = false;
+                    continue;
                 }
                 switch (img.Type)
                 {
@@ -89,13 +91,14 @@ namespace RollingRides.WebApp.User
                         {
                             var imgControl = new Image
                                                  {
-                                                     ImageUrl = ConfigurationManager.AppSettings["imagesFolder"] + img.Url,
+                                                     ImageUrl = img.Url,
                                                      ID = "img_" + img.Id
                                                  };
                             var btnDelImg = new Button {CommandArgument = img.Id.ToString()};
                             btnDelImg.Click += new EventHandler(btnDelImg_Click);
                             btnDelImg.Text = "Delete Image";
                             pnlOldImages.Controls.Add(imgControl);
+                            pnlOldImages.Controls.Add(btnDelImg);
                         }
                         break;
                     //case (int)MediaType.Youtube:
@@ -195,6 +198,7 @@ namespace RollingRides.WebApp.User
                         try
                         {
                             _autoManager.DeleteImage(image.Id, auto.Id, user.Id);
+                            
                             auto.Images.Remove(image);
                         }
                         catch (Exception ex)
@@ -204,15 +208,15 @@ namespace RollingRides.WebApp.User
                 
                     auto.Images.Add(imgYoutube);
                 }
+                auto.Images = auto.Images.Where(x => (x.MediaType != MediaType.Image) || (x.IsMainImage == 1)).ToList();
+                
                 foreach (var file in
-                    Request.Files.AllKeys.Select(fileStr => Request.Files[fileStr]).Where(file => file.ContentLength <= 5000000))
+                    Request.Files.AllKeys.Select(fileStr => Request.Files[fileStr]).Where(file => file.ContentLength <= 5000000).Where(file => !string.IsNullOrEmpty(file.FileName) && file.FileName != fuMainImage.FileName))
                 {
-                    
-                    
-                    if (string.IsNullOrEmpty(file.FileName))
-                        continue;
                     if(StringHelper.IsValidCarFax(file.FileName))
                     {
+                        if(!string.IsNullOrEmpty(auto.CarfaxReportPath))
+                            File.Delete(Server.MapPath(auto.CarfaxReportPath));
                         var theG = Guid.NewGuid();
                         auto.CarfaxReportPath = ConfigurationManager.AppSettings["CarfaxPathUrl"] + theG.ToString() + file.FileName;
                         fuCarFax.SaveAs(Server.MapPath(ConfigurationManager.AppSettings["CarfaxPathUrl"]) + theG.ToString() + file.FileName);
@@ -234,11 +238,40 @@ namespace RollingRides.WebApp.User
                         foreach (var image in serverVid)
                         {
                             _autoManager.DeleteImage(image.Id, auto.Id, user.Id);
+                            File.Delete(Server.MapPath(image.Url));
                         }
                     }
                     auto.Images.Add(img);
 
                     file.SaveAs(Server.MapPath(ConfigurationManager.AppSettings["imagesFolder"]) + theGuid + StringHelper.MakeFileSafe(file.FileName));
+                }
+                if(fuMainImage.HasFile)
+                {
+                    if (StringHelper.IsValidImage(fuMainImage.FileName))
+                    {
+                        var mainImgs = auto.Images.Where(x => x.MediaType == MediaType.Image && x.IsMainImage == 1);
+                        var imgs1 = new List<RollingRides.WebApp.Components.Datalayer.Models.Image>(mainImgs);
+                        foreach (var mainImg in imgs1)
+                        {
+                            //var mainImage = mainImg;
+                            _autoManager.DeleteImage(mainImg.Id, auto.Id, user.Id);
+                            File.Delete(Server.MapPath(mainImg.Url));
+                            //var imgSub = auto.Images.Single(x => x.Id == mainImage.Id);
+                            auto.Images.Remove(mainImg);
+                        }
+
+                        var mainImg2 = new RollingRides.WebApp.Components.Datalayer.Models.Image
+                                           {
+                                               Url =
+                                                   ConfigurationManager.AppSettings["imagesFolder"] + Guid.NewGuid() +
+                                                   fuMainImage.FileName,
+                                               Type = (int) MediaType.Image,
+                                               IsMainImage = 1,
+                                               AutomobileId = auto.Id
+                                           };
+                        auto.Images.Add(mainImg2);
+                        fuMainImage.SaveAs(Server.MapPath(mainImg2.Url));
+                    }
                 }
             }
             catch(Exception ex)

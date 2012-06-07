@@ -21,11 +21,12 @@ namespace RollingRides.WebApp.Components.Datalayer.Common
 			var dt = ExecuteQuery ("SELECT * FROM ["+tableName+"] WHERE Id = " + id);
 			return dt.Rows.Count == 0 ? null : ((DataRow)dt.Rows [0]).DataRowToModel<M> (prototype);
 		}
-		protected DataTable ExecuteQuery (string sql, IEnumerable<SqlParameter> paramList = null, CommandType type = CommandType.Text)
+		protected DataTable ExecuteQuery (string sql, IEnumerable<SqlParameter> paramList = null, CommandType type = CommandType.Text, SqlConnection con = null)
 		{
-				
+            if (con == null)
+                con = GetNewConnection();
 			var dt = new DataTable ();
-			var adapter = new SqlDataAdapter (sql, GetNewConnection ());
+			var adapter = new SqlDataAdapter (sql, con);
 			if (paramList != null) {
 				foreach (var p in paramList) {
 						adapter.SelectCommand.Parameters.Add (p);
@@ -36,9 +37,15 @@ namespace RollingRides.WebApp.Components.Datalayer.Common
 			adapter.Fill(dt);
 			return dt;
 		}
-		protected int ExecuteNonQuery (string sql, IEnumerable<SqlParameter> parameters = null, CommandType cmdType = CommandType.Text)
+		protected int ExecuteNonQuery (string sql, IEnumerable<SqlParameter> parameters = null, CommandType cmdType = CommandType.Text, SqlConnection con = null)
 		{
-			var cmd = new SqlCommand (sql, GetNewConnection ());
+		    var flag = false;
+            if(con == null)
+            {
+                flag = true;
+                con = GetNewConnection();
+            }
+		    var cmd = new SqlCommand (sql, con);
 			if (parameters != null) {
 				foreach (var parameter in parameters) {
 					cmd.Parameters.Add (parameter);
@@ -52,8 +59,11 @@ namespace RollingRides.WebApp.Components.Datalayer.Common
 				res = cmd.ExecuteNonQuery ();
 			}
 			finally{
-				cmd.Connection.Close ();
-				cmd.Dispose();
+                if (!flag)
+                {
+                    cmd.Connection.Close();
+                    cmd.Dispose();
+                }
 			}
 			return res;
 		}

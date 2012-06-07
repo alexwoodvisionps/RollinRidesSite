@@ -3,23 +3,43 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <script type="text/javascript">
-    $(document).ready(function () { 
-        $('#<%=cbxUserMyInfo.ClientID %>').click(function(){
-            if($(this).checked)
-            {
-                $('#ContactPanel').hide();
-            }
-            else
-            {
-                $('#ContactPanel').show();
-            }
+        function AddFileUpload() {
+
+            var html = '<div><input id="file' + counter + '" name = "file' + counter +
+
+                     '" type="file" />' +
+
+                     '<input id="Button' + counter + '" type="button" ' +
+
+                     'value="Remove" onclick = "RemoveFileUpload(this)" /></div>';
+
+            $("#imgContainer").html($(imgContainer).html() + html);
+
+            counter++;
+
+        }
+
+        function RemoveFileUpload(div) {
+
+            $("#imgContainer").remove($(div).parent());
+
+        }
+        $(document).ready(function () {
+            $('#<%=cbxUserMyInfo.ClientID %>').click(function () {
+                if ($(this).attr('checked') && $(this).attr('checked') == 'true') {
+                    $('#ContactPanel').hide();
+                }
+                else {
+                    $('#ContactPanel').show();
+                }
+            });
+            $('#btnAddMoreImgs').click(function () {
+
+                AddFileUpload();
+                return false;
+            });
         });
-    });
-    function addMoreImageFileUploads()
-    {
-        var uploadString = "<input type='file' />";
-        $('#imageContainer').html($('#imageContainer').html() + uploadString);
-    }
+   
 </script>
 
 <asp:Label ID="lblError" runat="server" />
@@ -164,7 +184,7 @@ Main Image: <asp:Image runat="server" ID="imgMainImage" Visible="false" />
 
 </div>
 <div>
-<input type="button" onclick='addMoreImageFileUploads' value="Add More Images" />
+<input type="button" id="btnAddMoreImgs" value="Add More Images" />
 </div>
 <div>
     <asp:Button ID="btnSave" runat="server" Text="Save Vehicle" 
