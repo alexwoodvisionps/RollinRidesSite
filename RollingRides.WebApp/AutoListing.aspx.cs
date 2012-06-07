@@ -55,7 +55,7 @@ namespace RollingRides.WebApp
         protected void btnDetails_Click(object sender, EventArgs e)
         {
             var id = int.Parse(((Button) sender).CommandArgument);
-            Response.Redirect("~/Admin/AutoDetail.aspx?id=" + id);
+            Response.Redirect("~/AutoDetail.aspx?id=" + id);
         }
 
       

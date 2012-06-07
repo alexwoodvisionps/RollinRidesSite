@@ -55,7 +55,7 @@ namespace RollingRides.WebApp.Components.Datalayer.Repositories
 				sql = "UPDATE Automobile Set ContactName = @cname, Make = @make, Model = @model," +
 					"Street1 = @s1, Street2 = @s2, City = @city, [State] = @state, " +
 					"ZipCode = @zip, year = @year, description = @des, Title = @title," +
-                    "PhoneNumber = @phone, Pricing = @price, MinimumDownPayment = @minpayment, HasFinancing = @financing,CarfaxReportPath = @report, IsUsed = @used, HasFinancing =  " + mobile.HasFinancing + ", MinimumDownPayment = " + (mobile.MinimumDownPayment.HasValue ? mobile.MinimumDownPayment.Value.ToString() : "NULL") + (type == UserType.Admin ? "IsHighlight = @h1 " : "") + (type == UserType.Admin ? ", IsApproved = @approved" : "") + "WHERE Id = " + mobile.Id;
+                    "PhoneNumber = @phone, Price = @price, HasFinancing = @financing,CarfaxReportPath = @report, IsUsed = @used, MinimumDownPayment = " + (mobile.MinimumDownPayment.HasValue ? mobile.MinimumDownPayment.Value.ToString() : "NULL") + (type == UserType.Admin ? ", IsHighlight = @h1 " : "") + (type == UserType.Admin ? ", IsApproved = @approved" : "") + " WHERE Id = " + mobile.Id;
 				var paramList = type == UserType.Admin ? new SqlParameter[]{
 					new SqlParameter("@cname", mobile.ContactName), 
                     new SqlParameter ("@make", mobile.Make),
@@ -96,7 +96,12 @@ namespace RollingRides.WebApp.Components.Datalayer.Repositories
 					new SqlParameter ("@used", mobile.IsUsed)
 				};
 				var rowsAffected = ExecuteNonQuery (sql, paramList);
-				return rowsAffected == 1 ? mobile : null;
+                foreach (var img in mobile.Images)
+                {
+                    img.AutomobileId = mobile.Id;
+                }
+                AddImages(mobile.Images);
+                return rowsAffected == 1 ? mobile : null;
 			}
 			sql = "INSERT INTO Automobile(Make, Model, Street1, Street2," +
 				"City, [State], ZipCode, Year, Description, Title, " +
@@ -126,7 +131,18 @@ namespace RollingRides.WebApp.Components.Datalayer.Repositories
 				};
 			var rowsAffected2 = ExecuteNonQuery (sql, paramList2);
 			
-			return rowsAffected2 == 1 ? mobile : null;
+            if(mobile.Id <= 0)
+            {
+                var identity = ExecuteQuery("Select SCOPE_IDENTITY()").Rows[0][0];
+                mobile.Id = int.Parse(identity.ToString());
+
+            }
+	        foreach (var img in mobile.Images)
+	        {
+	            img.AutomobileId = mobile.Id;
+	        }
+	        AddImages(mobile.Images);
+	        return rowsAffected2 == 1 ? mobile : null;
 		}
 		public bool Delete (int id, out List<Image> imgsDeleted)
 		{
@@ -149,7 +165,11 @@ namespace RollingRides.WebApp.Components.Datalayer.Repositories
 		{
 			var auto = GetById (Id, "Automobile", new Automobile ());
 			auto.Images = GetImagesByAutoId (auto.Id, false);
-		    auto.Seller = new UserRepository().GetById(auto.UserId);
+		    foreach (var img in auto.Images)
+		    {
+		        img.Type = (int) StringHelper.GetMediaType(img.Url);
+		    }
+            auto.Seller = new UserRepository().GetById(auto.UserId);
             return auto;
 		}
       
@@ -183,6 +203,7 @@ namespace RollingRides.WebApp.Components.Datalayer.Repositories
 			var autos = ExecuteQuery (sql, paramList).DataTableToList<Automobile> (new Automobile ());
 			foreach (var auto in autos) {
 				auto.Images = GetImagesByAutoId (auto.Id, true);
+
 			}
 		    return autos;
 		}
@@ -200,7 +221,7 @@ namespace RollingRides.WebApp.Components.Datalayer.Repositories
 		            let sql = "INSERT INTO Image(Url, Type, IsMainImage, AutomobileId) Values(@url, @type, @IsMain, @AutoId)"
 		            let paramList = new SqlParameter[]
 		                                {
-		                                    new SqlParameter("@url", img.Url), new SqlParameter("@type", img.IsMainImage), new SqlParameter("@IsMain", img.IsMainImage), new SqlParameter("@AutoId", img.AutomobileId)
+		                                    new SqlParameter("@url", img.Url), new SqlParameter("@type", img.Type), new SqlParameter("@IsMain", img.IsMainImage), new SqlParameter("@AutoId", img.AutomobileId)
 		                                }
 		            select ExecuteNonQuery(sql, paramList)).Sum();
 		}

@@ -57,7 +57,7 @@ namespace RollingRides.WebApp
             {
                 var movieControl = new MovieControl
                                        {
-                                           Url = ConfigurationManager.AppSettings["imagesFolder"] + serverMovie.Url,
+                                           Url = serverMovie.Url,
                                            Width = 480,
                                            Height = 360 
                                        };

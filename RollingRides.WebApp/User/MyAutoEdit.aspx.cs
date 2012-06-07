@@ -61,6 +61,12 @@ namespace RollingRides.WebApp.User
             {
                 var auto = _autoManager.GetById(id);
                 BindOldImages(auto.Images);
+
+                if (!IsPostBack)
+                {
+                    var youtubeVid = auto.Images.FirstOrDefault(x => x.MediaType == MediaType.Youtube);
+                    txtYoutube.Text = youtubeVid == null ? "" : youtubeVid.Url;
+                }
             }
             else
             {
@@ -92,9 +98,9 @@ namespace RollingRides.WebApp.User
                             pnlOldImages.Controls.Add(imgControl);
                         }
                         break;
-                    case (int)MediaType.Youtube:
-                        txtYoutube.Text = img.Url;
-                        break;
+                    //case (int)MediaType.Youtube:
+                      //  txtYoutube.Text = img.Url;
+                        //break;
                     case (int)MediaType.Server:
                         lblVideo.Text = img.Url;
                         break;
@@ -143,6 +149,8 @@ namespace RollingRides.WebApp.User
                 lblError.Text = "You may not add anymore vehicles because you have a restriction as a basic user. Please <a href='/Contact.aspx'> Contact Us </a> to request a Corporate Account with unlimited vehicle advertisements!";
                 return;
             }
+            decimal price;
+            auto.Price = decimal.TryParse(txtPrice.Text, out price) ? price : (decimal) 0.0;
             auto.UserId = user.Id;
             auto.HasFinancing = cbxFianacing.Checked ? 1 : 0;
             auto.IsHighlight = 0;
@@ -180,7 +188,22 @@ namespace RollingRides.WebApp.User
                 if(auto.Images == null)
                     auto.Images = new List<Components.Datalayer.Models.Image>();
                 if(!string.IsNullOrEmpty(imgYoutube.Url))
+                {
+                    var images = new List<RollingRides.WebApp.Components.Datalayer.Models.Image>(auto.Images);
+                    foreach (var image in images.Where(x => x.MediaType == MediaType.Youtube))
+                    {
+                        try
+                        {
+                            _autoManager.DeleteImage(image.Id, auto.Id, user.Id);
+                            auto.Images.Remove(image);
+                        }
+                        catch (Exception ex)
+                        {
+                        }
+                    }
+                
                     auto.Images.Add(imgYoutube);
+                }
                 foreach (var file in
                     Request.Files.AllKeys.Select(fileStr => Request.Files[fileStr]).Where(file => file.ContentLength <= 5000000))
                 {
@@ -230,10 +253,15 @@ namespace RollingRides.WebApp.User
                 var temp = _autoManager.AddUpdate(auto, user.UserType);
                 if (temp == null)
                     lblError.Text = "Failed to Save Vehicle Please Try Again.";
+                else
+                {
+                    lblError.Text = "Vehicle Saved!";
+                    Response.Redirect("/User/MyVehicles.aspx");
+                }
             }
             catch(Exception ex)
             {
-                lblError.Text = "<strong>Missing Required Fields Failed To Save Vehicle</strong>";
+                lblError.Text = "<strong>Missing Required Fields Failed To Save Vehicle</strong>" + ex;
             }
             //foreach (HttpPostedFile file in Request.Files)
             //{

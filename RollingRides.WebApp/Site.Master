@@ -85,7 +85,7 @@
         <div class="span3">
           <div class="well sidebar-nav">
             <ul class="nav nav-list">
-              <li class="nav-header">Sidebar</li>
+              <li class="nav-header">General Menu</li>
               <li class="active"><a href="/Default.aspx">Home</a></li>
               <li><a href="/AutoListing.aspx">Auto Listing</a></li>
               <li><a href="/AutoSearch.aspx">Auto Search</a></li>
