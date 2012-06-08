@@ -3,26 +3,25 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <script type="text/javascript">
+        var counter = 0;
         function AddFileUpload() {
-
-            var html = '<div><input id="file' + counter + '" name = "file' + counter +
-
-                     '" type="file" />' +
+            
+            var html = '<div id="div_' + counter + '"><input id="file' + counter + '" name = "file' + counter + '" type="file" />'  +
 
                      '<input id="Button' + counter + '" type="button" ' +
 
-                     'value="Remove" onclick = "RemoveFileUpload(this)" /></div>';
-
-            $("#imgContainer").html($(imgContainer).html() + html);
-
+                     ' value="Remove" onclick = "RemoveFileUpload(' + counter + ')" /></div>';
+            
+            $("#imgContainer").html($("#imgContainer").html() + html);
+           
             counter++;
 
         }
 
-        function RemoveFileUpload(div) {
-
-            $("#imgContainer").remove($(div).parent());
-
+        function RemoveFileUpload(divNumber) {
+         
+            $('#div_' + divNumber).remove();
+           
         }
         $(document).ready(function () {
             $('#<%=cbxUserMyInfo.ClientID %>').click(function () {
