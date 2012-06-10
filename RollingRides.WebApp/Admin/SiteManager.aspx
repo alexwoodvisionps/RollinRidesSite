@@ -73,6 +73,13 @@
     Company Url: <asp:TextBox ID="txtCompanyUrl" runat="server" />
 </div>
 <div>
+    Location: <asp:DropDownList ID="ddlLoc" runat="server">
+                <asp:ListItem Text="Top" Value="1" />
+                <asp:ListItem Text="Side Bar" Value="2" />
+                <asp:ListItem Text="Footer" Value="3" />
+    </asp:DropDownList>
+</div>
+<div>
   Upload Advertiser Graphic:  <asp:FileUpload ID="fuAdvertiser" runat="server" />
 </div>
 <div>

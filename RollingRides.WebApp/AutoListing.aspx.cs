@@ -83,7 +83,7 @@ namespace RollingRides.WebApp
 
         private void BindData()
         {
-            var autos = _autoManager.GetAllVehicles(false);
+            var autos = _autoManager.GetAllVehicles(true);
             autos = ViewState["sortDirection"].ToString() == "ASC"
                         ? autos.OrderByDescending(x => x.IsHighlight).ThenBy(x => x.GetProperty(ViewState["sortField"].ToString())).ToList()
                         : autos.OrderByDescending(x => x.IsHighlight).ThenByDescending(x => x.GetProperty(ViewState["sortField"].ToString())).ToList();

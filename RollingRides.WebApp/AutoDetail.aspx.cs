@@ -34,7 +34,7 @@ namespace RollingRides.WebApp
                 litFinancing.Text = auto.HasFinancing == 1 ? "Yes" : "No";
                 lblMinimumDownPayment.Text = auto.MinimumDownPayment.HasValue ? StringHelper.FormatCurrency(auto.MinimumDownPayment.Value) : "N/A";
                 lblPrice.Text = StringHelper.FormatCurrency(auto.Price);
-                
+                lblColor.Text = auto.Color;
                 ViewState["auto"] = auto;
             }
             BindRepeater();

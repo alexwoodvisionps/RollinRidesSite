@@ -14,12 +14,13 @@ namespace RollingRides.WebApp.Components.Datalayer.Repositories
     {
         public Advertisement Add(Advertisement ad)
         {
-            const string sql = "INSERT INTO Advertisements (CompanyName, Link, DisplayObjectUrl) Values(@CompanyName, @Link, @Url)";
+            const string sql = "INSERT INTO Advertisements (CompanyName, Link, DisplayObjectUrl, Location) Values(@CompanyName, @Link, @Url, @Loc)";
             var parameters = new SqlParameter[]
                                  {
                                      new SqlParameter("@CompanyName", StringHelper.RemovePossibleXSS(ad.CompanyName)),
                                      new SqlParameter("@Link", StringHelper.RemovePossibleXSS(ad.Link)), 
-                                     new SqlParameter("@Url", StringHelper.RemovePossibleXSS(ad.DisplayObjectUrl)) 
+                                     new SqlParameter("@Url", StringHelper.RemovePossibleXSS(ad.DisplayObjectUrl)),
+                                     new SqlParameter("@Loc", ad.Location) 
                                  };
             ExecuteNonQuery(sql, parameters);
             //ad.Id = int.Parse(ExecuteQuery("SELECT @@IDENTITY").Rows[0][0].ToString());
@@ -31,9 +32,9 @@ namespace RollingRides.WebApp.Components.Datalayer.Repositories
             ExecuteNonQuery("DELETE FROM ADVERTISEMENTS WHERE Id = " + id);
         }
 
-        public Advertisement GetAdvertisement()
+        public Advertisement GetAdvertisement(int location)
         {
-            var dt = ExecuteQuery("SELECT * FROM Advertisements");
+            var dt = ExecuteQuery("SELECT * FROM Advertisements WHERE Location =  " + location);
             if(dt.Rows.Count > 0)
             {
                 var rnd = new Random(1000);

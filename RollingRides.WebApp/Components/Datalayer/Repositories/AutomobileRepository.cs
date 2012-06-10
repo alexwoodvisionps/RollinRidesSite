@@ -52,7 +52,7 @@ namespace RollingRides.WebApp.Components.Datalayer.Repositories
 			var sql = "";
 			
 			if (dt.Rows.Count == 1) {
-				sql = "UPDATE Automobile Set ContactName = @cname, Make = @make, Model = @model," +
+				sql = "UPDATE Automobile Set ContactName = @cname, Make = @make, Model = @model, Color = @color, " +
 					"Street1 = @s1, Street2 = @s2, City = @city, [State] = @state, " +
 					"ZipCode = @zip, year = @year, description = @des, Title = @title," +
                     "PhoneNumber = @phone, Price = @price, HasFinancing = @financing,CarfaxReportPath = @report, IsUsed = @used, MinimumDownPayment = " + (mobile.MinimumDownPayment.HasValue ? mobile.MinimumDownPayment.Value.ToString() : "NULL") + (type == UserType.Admin ? ", IsHighlight = @h1 " : "") + (type == UserType.Admin ? ", IsApproved = @approved" : "") + " WHERE Id = " + mobile.Id;
@@ -60,6 +60,7 @@ namespace RollingRides.WebApp.Components.Datalayer.Repositories
 					new SqlParameter("@cname", mobile.ContactName), 
                     new SqlParameter ("@make", mobile.Make),
 					new SqlParameter ("@model", mobile.Model),
+                    new SqlParameter("@color", mobile.Color), 
 					new SqlParameter ("@s1", mobile.Street1),
 					new SqlParameter ("@s2", mobile.Street2),
 					new SqlParameter ("@city", mobile.City),
@@ -80,7 +81,8 @@ namespace RollingRides.WebApp.Components.Datalayer.Repositories
 					new SqlParameter("@cname", mobile.ContactName), 
                     new SqlParameter ("@make", mobile.Make),
 					new SqlParameter ("@model", mobile.Model),
-					new SqlParameter ("@s1", mobile.Street1),
+					new SqlParameter("@color", mobile.Color), 
+                    new SqlParameter ("@s1", mobile.Street1),
 					new SqlParameter ("@s2", mobile.Street2),
 					new SqlParameter ("@city", mobile.City),
 					new SqlParameter ("@state", mobile.State),
@@ -105,9 +107,9 @@ namespace RollingRides.WebApp.Components.Datalayer.Repositories
 			}
 			sql = "INSERT INTO Automobile(Make, Model, Street1, Street2," +
 				"City, [State], ZipCode, Year, Description, Title, " +
-				"PhoneNumber, CarfaxReportPath, UserId, ContactName, IsUsed, IsApproved, Price, MinimumDownPayment, HasFinancing) Values(" +
+				"PhoneNumber, CarfaxReportPath, UserId, ContactName, IsUsed, IsApproved, Price, MinimumDownPayment, HasFinancing, Color) Values(" +
 				"@make, @model, @s1, @s2, @city, @state, @zip, @year, @des," +
-				"@title, @phone, @report, @userId, @cname, @used, @approved, @price, @minpayment, @financing)";
+				"@title, @phone, @report, @userId, @cname, @used, @approved, @price, @minpayment, @financing, @color)";
 			var paramList2 = new SqlParameter[]{
 					new SqlParameter ("@make", mobile.Make),
 					new SqlParameter ("@model", mobile.Model),
@@ -127,7 +129,8 @@ namespace RollingRides.WebApp.Components.Datalayer.Repositories
                     new SqlParameter("@approved", mobile.IsApproved),
                      new SqlParameter ("@minpayment",(object) mobile.MinimumDownPayment??DBNull.Value),
                     new SqlParameter ("@financing", mobile.HasFinancing),
-                    new SqlParameter ("@price", mobile.Price)
+                    new SqlParameter ("@price", mobile.Price),
+                    new SqlParameter("@color", mobile.Color) 
 				};
 	        var conn = GetNewConnection();
 			//var rowsAffected2 = ExecuteQuery (sql, paramList2, con: conn);
@@ -172,9 +175,9 @@ namespace RollingRides.WebApp.Components.Datalayer.Repositories
 			}
 			return autos;
 		}
-		public Automobile GetById (int Id)
+		public Automobile GetById (int id)
 		{
-			var auto = GetById (Id, "Automobile", new Automobile ());
+			var auto = GetById (id, "Automobile", new Automobile ());
 			auto.Images = GetImagesByAutoId (auto.Id, false);
 		    foreach (var img in auto.Images)
 		    {
@@ -192,19 +195,19 @@ namespace RollingRides.WebApp.Components.Datalayer.Repositories
 			var paramList = new List<SqlParameter> ();
 			if (make != null) {
 				paramList.Add (new SqlParameter ("@make", make));
-				sqlRest += " and ToUpper(Make) = ToUpper(@make) ";
+				sqlRest += " and Upper(Make) = Upper(@make) ";
 			}
 			if (model != null) {
 				paramList.Add (new SqlParameter ("@model", model));
-				sqlRest += " and ToUpper(Model) = ToUpper(@model)";
+				sqlRest += " and Upper(Model) = Upper(@model)";
 			}
 			if (minPrice.HasValue) {
 				paramList.Add (new SqlParameter ("@minPrice", minPrice.Value));
-				sqlRest += " and price > @minPrice";
+				sqlRest += " and price >= @minPrice";
 			}
 			if (maxPrice.HasValue) {
                 paramList.Add(new SqlParameter("@maxPrice", maxPrice.Value));
-				sqlRest += " and price < @maxPrice ";
+				sqlRest += " and price <= @maxPrice ";
 			}
 			if (sqlRest.Length > 0) {
 				sqlRest = sqlRest.Substring (4, sqlRest.Length - 4);

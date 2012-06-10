@@ -27,7 +27,7 @@ namespace RollingRides.WebApp.Components.BusinessLogic
 	    {
 	        var auto = _autoRepo.GetById(autoId);
             if (auto.UserId != userId)
-                return;
+                throw new Exception("You don't own this car");
 	        
 	        foreach (var image in auto.Images.Where(image => image.Id == id))
 	        {

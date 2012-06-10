@@ -140,7 +140,7 @@ namespace RollingRides.WebApp.Admin
 
         protected void btnAddAvertiser_Click(object sender, EventArgs e)
         {
-            _adRepo.Add(new Advertisement { CompanyName = StringHelper.RemovePossibleXSS(txtCompany.Text), Link = StringHelper.RemovePossibleXSS(txtCompanyUrl.Text), DisplayObjectUrl = ConfigurationManager.AppSettings["AdvertisementDir"] + fuAdvertiser.FileName });
+            _adRepo.Add(new Advertisement { CompanyName = StringHelper.RemovePossibleXSS(txtCompany.Text), Link = StringHelper.RemovePossibleXSS(txtCompanyUrl.Text), DisplayObjectUrl = ConfigurationManager.AppSettings["AdvertisementDir"] + fuAdvertiser.FileName, Location = int.Parse(ddlLoc.SelectedValue)});
             fuAdvertiser.SaveAs(Server.MapPath(ConfigurationManager.AppSettings["AdvertisementDir"]) + fuAdvertiser.FileName);
             lblError.Text = "Advertiser Successfully Added";
             BindAds();

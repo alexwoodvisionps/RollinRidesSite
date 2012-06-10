@@ -7,7 +7,7 @@ namespace RollingRides.WebApp.Components.Datalayer.Repositories.Interfaces
 	{
 		Advertisement Add(Advertisement ad);
 		void Delete(int id);
-		Advertisement GetAdvertisement();
+		Advertisement GetAdvertisement(int location);
 		List<Advertisement> GetAllAdvertisements();
 	}
 }

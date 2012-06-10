@@ -9,17 +9,16 @@
         <asp:BoundField DataField="Make" HeaderText="Make" SortExpression="Make"/>
         <asp:BoundField DataField="Model" HeaderText="Model" SortExpression="Model" />
         <asp:BoundField DataField="Year" HeaderText="Year" SortExpression="Year" />
-        
-        <asp:BoundField DataField="Seller.CompanyName" HeaderText="Company Name" />
-        <asp:BoundField DataField="Price" HeaderText="Price" SortExpression="Price" DataFormatString="0.00" />
+        <asp:BoundField DataField="Price" HeaderText="Price" SortExpression="Price" DataFormatString="{0:C}" />
+        <asp:BoundField DataField="Color" HeaderText="Color" SortExpression="Color" />
+        <asp:BoundField DataField="ContactName" HeaderText="Contact Name" />        
         <asp:BoundField DataField="PhoneNumber" HeaderText="Contact Phone" />
         
         <asp:TemplateField>
             <ItemTemplate>
                 <asp:Image ID="imgMain" runat="server" />
                 <asp:HiddenField ID="hfId" Value='<%# Eval("Id") %>' runat="server" />
-                <asp:Button ID="btnDetails" OnClick="btnDetails_Click" Text="Details" runat="server" CommandArgument='<%# Eval("Id") %>' />              
-                
+                <asp:Button ID="btnDetails" OnClick="btnDetails_Click" Text="Details" runat="server" CommandArgument='<%# Eval("Id") %>' />                              
             </ItemTemplate>
         </asp:TemplateField>
     </Columns>

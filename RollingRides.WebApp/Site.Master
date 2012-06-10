@@ -74,6 +74,7 @@
               <li><a href="/AutoSearch.aspx">Auto Search</a></li>
               <li><a href="/User/MyAccount.aspx">My Account</a></li>
               <li><a href="/User/MyVehicles.aspx">My Vehicles</a></li>
+              <li><a href="/AdvertiseWithUs.aspx">Be An Advertiser!</a></li>
             </ul>
           </div><!--/.nav-collapse -->
         </div>
@@ -98,7 +99,7 @@
           
             
     
-    <div><asp:Image ID="companyLogo" runat="server" Width="400" Height="50" /></div>
+    <div><asp:Image ID="companyLogo" runat="server" /></div>
     <div><asp:Literal ID="litAd" runat="server" /></div>
     <div>
         <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">

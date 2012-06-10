@@ -32,7 +32,9 @@ namespace RollingRides.WebApp.Components.Datalayer.Models
 		public int IsUsed { get; set;}
         public int IsApproved { get; set; }
         public int HasFinancing { get; set; }
-        public decimal? MinimumDownPayment { get; set; } 
+        public decimal? MinimumDownPayment { get; set; }
+	    private string _color;
+        public string Color { set { _color = (value ?? "").ToLower(); } get { return _color; } }
 	}
 }
 

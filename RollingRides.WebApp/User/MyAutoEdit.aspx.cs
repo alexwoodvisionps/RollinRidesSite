@@ -51,6 +51,7 @@ namespace RollingRides.WebApp.User
                                                  : "N/A";
                     ddlState.SelectedValue = auto.State;
                     txtPrice.Text = auto.Price.ToString();
+                    txtColor.Text = auto.Color;
                     txtMinDownPayment.Text = auto.MinimumDownPayment.ToString();
                     cbxFianacing.Checked = auto.HasFinancing == 1;
                     cbxUsed.Checked = auto.IsUsed == 1;
@@ -116,6 +117,12 @@ namespace RollingRides.WebApp.User
             var user = (RollingRides.WebApp.Components.Datalayer.Models.User) Session["User"];
             _autoManager.DeleteImage(int.Parse(((Button) sender).CommandArgument),int.Parse(lblId.Text), user.Id);
             var auto = _autoManager.GetById(int.Parse(lblId.Text));
+            var delImgs = auto.Images.Where(x => x.Id == int.Parse(((Button) sender).CommandArgument));
+            foreach (var delImg in delImgs)
+            {
+                auto.Images.Remove(delImg);
+                File.Delete(Server.MapPath(delImg.Url));
+            }
             BindOldImages(auto.Images);
         }
 
@@ -147,6 +154,9 @@ namespace RollingRides.WebApp.User
 
             auto.MinimumDownPayment = decimal.TryParse(txtMinDownPayment.Text, out d) ? d : (decimal?) null;
             var user = (RollingRides.WebApp.Components.Datalayer.Models.User) Session["User"];
+
+            auto.IsApproved = user.UserType == UserType.Admin || user.UserType == UserType.Corporate ? 1 : 0;
+            
             if(autos.Count() > 4 && user.UserType == UserType.User)
             {
                 lblError.Text = "You may not add anymore vehicles because you have a restriction as a basic user. Please <a href='/Contact.aspx'> Contact Us </a> to request a Corporate Account with unlimited vehicle advertisements!";
@@ -155,6 +165,7 @@ namespace RollingRides.WebApp.User
             decimal price;
             auto.Price = decimal.TryParse(txtPrice.Text, out price) ? price : (decimal) 0.0;
             auto.UserId = user.Id;
+            auto.Color = StringHelper.RemovePossibleXSS(txtColor.Text);
             auto.HasFinancing = cbxFianacing.Checked ? 1 : 0;
             auto.IsHighlight = 0;
             auto.Year = int.Parse(ddlYear.SelectedValue);

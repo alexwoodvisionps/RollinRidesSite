@@ -59,6 +59,7 @@
     <Content Include="Admin\UserManagementList.aspx" />
     <Content Include="Admin\VehicleManagementForm.aspx" />
     <Content Include="Admin\VehicleManagementList.aspx" />
+    <Content Include="AdvertiseWithUs.aspx" />
     <Content Include="App_Data\RollingRides.mdf" />
     <Content Include="App_Data\RollingRides_log.ldf">
       <DependentUpon>RollingRides.mdf</DependentUpon>
@@ -67,6 +68,7 @@
     <Content Include="AutoListing.aspx" />
     <Content Include="AutoSearch.aspx" />
     <Content Include="Contact.aspx" />
+    <Content Include="CorporateBenefits.aspx" />
     <Content Include="css\bootstrap-responsive.css" />
     <Content Include="css\bootstrap-responsive.min.css" />
     <Content Include="css\bootstrap.css" />
@@ -175,6 +177,13 @@
     <Compile Include="Admin\VehicleManagementList.aspx.designer.cs">
       <DependentUpon>VehicleManagementList.aspx</DependentUpon>
     </Compile>
+    <Compile Include="AdvertiseWithUs.aspx.cs">
+      <DependentUpon>AdvertiseWithUs.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AdvertiseWithUs.aspx.designer.cs">
+      <DependentUpon>AdvertiseWithUs.aspx</DependentUpon>
+    </Compile>
     <Compile Include="AutoDetail.aspx.cs">
       <DependentUpon>AutoDetail.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -210,7 +219,6 @@
     <Compile Include="Components\Datalayer\Models\Advertisement.cs" />
     <Compile Include="Components\Datalayer\Models\Automobile.cs" />
     <Compile Include="Components\Datalayer\Models\Image.cs" />
-    <Compile Include="Components\Datalayer\Models\Location.cs" />
     <Compile Include="Components\Datalayer\Models\Movie.cs" />
     <Compile Include="Components\Datalayer\Models\Settings.cs" />
     <Compile Include="Components\Datalayer\Models\User.cs" />
@@ -232,6 +240,13 @@
     </Compile>
     <Compile Include="Controls\MovieControl.cs" />
     <Compile Include="Controls\YoutubeMovieControl.cs" />
+    <Compile Include="CorporateBenefits.aspx.cs">
+      <DependentUpon>CorporateBenefits.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CorporateBenefits.aspx.designer.cs">
+      <DependentUpon>CorporateBenefits.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

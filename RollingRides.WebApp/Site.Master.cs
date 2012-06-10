@@ -5,6 +5,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using RollingRides.WebApp.Components.Datalayer.Models;
 using RollingRides.WebApp.Components.Datalayer.Repositories;
 
 namespace RollingRides.WebApp
@@ -20,9 +21,9 @@ namespace RollingRides.WebApp
                 companyLogo.ImageUrl = settings.CompanyLogoUrl;
             }
             var adRepo = new AdvertisementRepository();
-            var ad1 = adRepo.GetAdvertisement();
-            var ad2 = adRepo.GetAdvertisement();
-            var ad3 = adRepo.GetAdvertisement();
+            var ad1 = adRepo.GetAdvertisement((int)LocationType.Top);
+            var ad2 = adRepo.GetAdvertisement((int)LocationType.SideBar);
+            var ad3 = adRepo.GetAdvertisement((int)LocationType.Footer);
             if (ad1 != null)
             {
                 litAd.Text = "<a href='" + ad1.Link + "' > <img src='" +

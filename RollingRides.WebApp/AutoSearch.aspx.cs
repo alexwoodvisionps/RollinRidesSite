@@ -39,6 +39,7 @@ namespace RollingRides.WebApp
             var models =
                 _autoManager.GetAllVehicles(true).Where(x => x.Make == ddlMake.SelectedValue).OrderBy(x => x.Model).Select(
                     x => new {Model = x.Model}).Distinct().ToList();
+            ddlModel.Items.Clear();
             ddlModel.Items.Add(new ListItem("Choose A Model",""));
             ddlModel.AppendDataBoundItems = true;
             ddlModel.DataTextField = "Model";
@@ -117,6 +118,11 @@ namespace RollingRides.WebApp
                 lblError.Text = "You Entered No Search Criteria!";
                 return;
             }
+            BindData();
+        }
+
+        protected void ddlModel_SelectedIndexChanged(object sender, EventArgs e)
+        {
             BindData();
         }
     }

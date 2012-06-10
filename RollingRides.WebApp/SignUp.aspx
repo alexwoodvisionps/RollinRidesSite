@@ -5,7 +5,9 @@
 <div>
     <asp:Label runat="server" ID="lblError" />
 </div>
-
+<div>
+    <asp:HyperLink ID="hlBenefits" NavigateUrl="/CorporateBenefits.aspx" runat="server" Text="Check Out The Benefits Of Being A Corporate User Versus A Basic User" />
+</div>
 <div>
   Username:  <asp:TextBox ID="txtUsername" runat="server" />
 </div>

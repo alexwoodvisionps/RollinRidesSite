@@ -8,9 +8,16 @@
         <asp:BoundField DataField="Make" HeaderText="Make" SortExpression="Make"/>
         <asp:BoundField DataField="Model" HeaderText="Model" SortExpression="Model" />
         <asp:BoundField DataField="Year" HeaderText="Year" SortExpression="Year" />
-        <asp:BoundField DataField="IsApproved" HeaderText="Has Been Approved?" SortExpression="IsApproved" />
         <asp:TemplateField>
+            <HeaderTemplate>
+                Has Been Approved?
+            </HeaderTemplate>
+            <ItemTemplate><%#Eval("IsApproved").ToString() == "1" ? "Yes" : "No" %></ItemTemplate>
+        </asp:TemplateField>
+        <asp:TemplateField>
+            
             <ItemTemplate>
+                
                 <asp:Image ID="imgMain" runat="server" />
                 <asp:HiddenField ID="hfId" Value='<%# Eval("Id") %>' runat="server" />
                 <asp:Button ID="btnEdit" OnClick="btnEdit_Click" Text="Edit" runat="server" CommandArgument='<%# Eval("Id") %>' />              

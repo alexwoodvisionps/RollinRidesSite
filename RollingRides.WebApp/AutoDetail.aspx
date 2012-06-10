@@ -7,11 +7,15 @@ Car Information:
 <asp:Label ID="lblYearMakeModel" runat="server" />
 </div>
 <div>
+    Color: <asp:Label ID="lblColor" runat="server" />
+</div>
+<div>
     Has Financing Option? <asp:Literal ID="litFinancing" runat="server" />
 </div>
 <div>
    Price: <asp:Label ID="lblPrice" runat="server" />
 </div>
+
 <div>
     Minimum Down Payment: <asp:Label ID="lblMinimumDownPayment" runat="server" />
 </div>

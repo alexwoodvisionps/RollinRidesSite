@@ -58,6 +58,9 @@ Year: <asp:DropDownList ID="ddlYear" runat="server" />
     Price: <asp:TextBox ID="txtPrice" runat="server" />
 </div>
 <div>
+    Color: <asp:TextBox ID="txtColor" runat="server" />
+</div>
+<div>
     Financing Available? Yes: <asp:CheckBox ID="cbxFianacing" runat="server" /> 
 </div>
 <div>

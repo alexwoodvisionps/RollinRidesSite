@@ -2,6 +2,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+<div style="text-align: center">
 <div>
 <h2>
     <asp:HyperLink runat="server" NavigateUrl="~/Admin/UserManagementList.aspx" Text="User Management" />
@@ -16,9 +17,10 @@
     <h2><asp:HyperLink runat="server" NavigateUrl="~/User/MyAccount.aspx" Text="My Account" /></h2>
 </div>
 <div>
-    <h2><asp:HyperLink runat="server" NavigateUrl="~/Admin/Billing.aspx" Text="Coporate Billing" /></h2>
+    <h2><asp:HyperLink runat="server" NavigateUrl="~/Admin/Billing.aspx" Text="Corporate Billing" /></h2>
 </div>
 <div>
     <h2><asp:HyperLink runat="server" NavigateUrl="~/Admin/SiteManager.aspx" Text="Site Management" /></h2>
+</div>
 </div>
 </asp:Content>
