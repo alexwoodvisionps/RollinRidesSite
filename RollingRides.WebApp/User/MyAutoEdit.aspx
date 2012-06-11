@@ -174,7 +174,7 @@ Youtube Video Link: <asp:TextBox ID="txtYoutube" runat="server" />
 </div>
 <div>
 Main Image: <asp:Image runat="server" ID="imgMainImage" Visible="false" />
-    <asp:FileUpload ID="fuMainImage" runat="server" />
+    <asp:FileUpload ID="fuMainImage" runat="server" /> (Will be shruken to 200px X 100px to be displayed correctly on the auto listing page) 
 </div>
 <div>
     Other Images:

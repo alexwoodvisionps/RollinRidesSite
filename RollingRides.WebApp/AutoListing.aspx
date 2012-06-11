@@ -16,7 +16,7 @@
         
         <asp:TemplateField>
             <ItemTemplate>
-                <asp:Image ID="imgMain" runat="server" />
+                <asp:Image ID="imgMain" runat="server" Width="200" Height="100" />
                 <asp:HiddenField ID="hfId" Value='<%# Eval("Id") %>' runat="server" />
                 <asp:Button ID="btnDetails" OnClick="btnDetails_Click" Text="Details" runat="server" CommandArgument='<%# Eval("Id") %>' />                              
             </ItemTemplate>
