@@ -58,7 +58,7 @@
               <span class="caret"></span>
             </div>
             <ul class="dropdown-menu">
-              <li><a href="/User/MyAccount.aspx">My Profile</a></li>
+              <li><a style="color: #FFFFFF; font-weight: bold" href="/User/MyAccount.aspx">My Account</a></li>
               <li class="divider"></li>
               <li><asp:LinkButton ID="btnSignOut" runat="server" Text="Sign Out" OnClick="SignOut" /></li>
             </ul>
@@ -66,15 +66,15 @@
           <div class="nav-collapse">
             <ul class="nav">
               <li class="active"><a href="~/Default.aspx">Home</a></li>
-              <li><a href="/Login.aspx">Login</a></li>
-              <li><a href="/SignUp.aspx">Sign Up</a></li>
-              <li><a href="/About.aspx">About</a></li>
-              <li><a href="/Contact.aspx">Contact</a></li>
-              <li><a href="/AutoListing.aspx">Auto Listing</a></li>
-              <li><a href="/AutoSearch.aspx">Auto Search</a></li>
-              <li><a href="/User/MyAccount.aspx">My Account</a></li>
-              <li><a href="/User/MyVehicles.aspx">My Vehicles</a></li>
-              <li><a href="/AdvertiseWithUs.aspx">Be An Advertiser!</a></li>
+              <li class="active"><a href="/Login.aspx">Login</a></li>
+              <li class="active"><a href="/SignUp.aspx">Sign Up</a></li>
+              <li class="active"><a href="/About.aspx">About</a></li>
+              <li class="active"><a href="/Contact.aspx">Contact</a></li>
+              <li class="active"><a href="/AutoListing.aspx">Auto Listing</a></li>
+              <li class="active"><a href="/AutoSearch.aspx">Auto Search</a></li>
+              <li class="active"><a href="/User/MyAccount.aspx">My Account</a></li>
+              <li class="active"><a href="/User/MyVehicles.aspx">My Vehicles</a></li>
+              <li class="active"><a href="/AdvertiseWithUs.aspx">Be An Advertiser!</a></li>
             </ul>
           </div><!--/.nav-collapse -->
         </div>
@@ -121,6 +121,9 @@
         <p>&copy; Rolling Rides <%= DateTime.Now.Year %></p>
         <p>
             &copy; Wooden Software Development Inc <%= DateTime.Now.Year %> 
+        </p>
+        <p>
+            Contact: Alexander Wood CEO of Wooden Software Development Inc at <a href="mailto:woodensdinc@gmail.com">my email</a> for elegant software development solutions. 
         </p>
       </footer>
 

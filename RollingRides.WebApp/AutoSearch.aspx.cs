@@ -7,6 +7,8 @@ using System.Web.UI.WebControls;
 using RollingRides.WebApp.Components.BusinessLogic;
 using RollingRides.WebApp.Components.BusinessLogic.Common;
 using RollingRides.WebApp.Components.BusinessLogic.Interfaces;
+using RollingRides.WebApp.Components.Datalayer.Models;
+using Image = System.Web.UI.WebControls.Image;
 
 namespace RollingRides.WebApp
 {
@@ -29,7 +31,25 @@ namespace RollingRides.WebApp
             ddlMake.SelectedIndexChanged += ddlMake_SelectedIndexChanged;
             gvAutos.Sorting += gvAutos_Sorting;
             gvAutos.PageIndexChanging += gvAutos_PageIndexChanging;
+            gvAutos.RowCreated += new GridViewRowEventHandler(gvAutos_RowCreated);
             BindData();
+        }
+
+        private void gvAutos_RowCreated(object sender, GridViewRowEventArgs e)
+        {
+            if (e.Row.Cells.Count < 5)
+                return;
+            var hf = e.Row.Cells[4].FindControl("hfId") as HiddenField;
+            if (hf == null)
+                return;
+            var auto = (Automobile)e.Row.DataItem;
+            var img = e.Row.Cells[4].FindControl("imgMain") as Image;
+            // ReSharper disable PossibleNullReferenceException
+            var image =
+                _autoManager.GetImagesByAutoId(auto.Id, true).FirstOrDefault();
+
+            img.ImageUrl = image == null ? "" : image.Url;
+            // ReSharper restore PossibleNullReferenceException
         }
 
         protected void ddlMake_SelectedIndexChanged(object sender, EventArgs e)
@@ -87,7 +107,7 @@ namespace RollingRides.WebApp
         protected void btnDetails_Click(object sender, EventArgs e)
         {
             var id = int.Parse(((Button)sender).CommandArgument);
-            Response.Redirect("~/Admin/AutoDetail.aspx?id=" + id);
+            Response.Redirect("~/AutoDetail.aspx?id=" + id);
         }
 
 

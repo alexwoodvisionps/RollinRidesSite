@@ -211,7 +211,7 @@ namespace RollingRides.WebApp.Components.Datalayer.Repositories
 			}
 			if (sqlRest.Length > 0) {
 				sqlRest = sqlRest.Substring (4, sqlRest.Length - 4);
-				sql += " WHERE " + sqlRest;
+				sql += " WHERE IsApproved = 1 AND" + sqlRest;
 			}
 			
 			var autos = ExecuteQuery (sql, paramList).DataTableToList<Automobile> (new Automobile ());

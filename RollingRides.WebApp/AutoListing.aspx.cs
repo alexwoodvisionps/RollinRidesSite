@@ -8,6 +8,8 @@ using System.Web.UI.WebControls;
 using RollingRides.WebApp.Components.BusinessLogic;
 using RollingRides.WebApp.Components.BusinessLogic.Common;
 using RollingRides.WebApp.Components.BusinessLogic.Interfaces;
+using RollingRides.WebApp.Components.Datalayer.Models;
+using Image = System.Web.UI.WebControls.Image;
 
 namespace RollingRides.WebApp
 {
@@ -26,27 +28,28 @@ namespace RollingRides.WebApp
                 ViewState["sortDirection"] = "ASC";
                 ViewState["sortField"] = "Make";
             }
-            BindData();
             gvAutos.Sorting += new GridViewSortEventHandler(gvAutos_Sorting);
             gvAutos.PageIndexChanging += new GridViewPageEventHandler(gvAutos_PageIndexChanging);
             gvAutos.RowCreated += new GridViewRowEventHandler(gvAutos_RowCreated);
+            BindData();
+            
         }
 
         protected void gvAutos_RowCreated(object sender, GridViewRowEventArgs e)
         {
-            if (e.Row.Cells.Count < 10)
+            if (e.Row.Cells.Count < 5)
                 return;
-            var hf = e.Row.Cells[9].FindControl("hfId") as HiddenField;
+            var hf = e.Row.Cells[4].FindControl("hfId") as HiddenField;
             if (hf == null)
                 return;
-            var img = e.Row.Cells[9].FindControl("imgMain") as Image;
-// ReSharper disable PossibleNullReferenceException
+            var auto = (Automobile)e.Row.DataItem;
+            var img = e.Row.Cells[4].FindControl("imgMain") as Image;
+            // ReSharper disable PossibleNullReferenceException
             var image =
-                _autoManager.GetImagesByAutoId(int.Parse(hf.Value), true).SingleOrDefault();
-            
+                _autoManager.GetImagesByAutoId(auto.Id, true).FirstOrDefault();
 
             img.ImageUrl = image == null ? "" : image.Url;
-// ReSharper restore PossibleNullReferenceException
+            // ReSharper restore PossibleNullReferenceException
 
         }
 

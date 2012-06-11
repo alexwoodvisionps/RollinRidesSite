@@ -145,7 +145,10 @@ namespace RollingRides.WebApp.User
                
                 
             }
-            
+            if(auto.Images == null)
+                auto.Images = new List<Components.Datalayer.Models.Image>();
+            var autoImgs = new List<RollingRides.WebApp.Components.Datalayer.Models.Image>(auto.Images);
+            auto.Images = null;
             auto.IsUsed = cbxUsed.Checked ? 1 : 0;
             auto.Make = txtMake.Text;
             auto.Model = txtModel.Text;
@@ -203,7 +206,7 @@ namespace RollingRides.WebApp.User
                     auto.Images = new List<Components.Datalayer.Models.Image>();
                 if(!string.IsNullOrEmpty(imgYoutube.Url))
                 {
-                    var images = new List<RollingRides.WebApp.Components.Datalayer.Models.Image>(auto.Images);
+                    var images = new List<RollingRides.WebApp.Components.Datalayer.Models.Image>(autoImgs);
                     foreach (var image in images.Where(x => x.MediaType == MediaType.Youtube))
                     {
                         try
@@ -219,7 +222,7 @@ namespace RollingRides.WebApp.User
                 
                     auto.Images.Add(imgYoutube);
                 }
-                auto.Images = auto.Images.Where(x => (x.MediaType != MediaType.Image) || (x.IsMainImage == 1)).ToList();
+                autoImgs = autoImgs.Where(x => (x.MediaType != MediaType.Image) || (x.IsMainImage == 1)).ToList();
                 
                 foreach (var file in
                     Request.Files.AllKeys.Select(fileStr => Request.Files[fileStr]).Where(file => file.ContentLength <= 5000000).Where(file => !string.IsNullOrEmpty(file.FileName) && file.FileName != fuMainImage.FileName))
@@ -245,7 +248,7 @@ namespace RollingRides.WebApp.User
                                   };
                     if(fileType == MediaType.Server)
                     {
-                        var serverVid = auto.Images.Where(x => x.Type == (int) MediaType.Server).ToList();
+                        var serverVid = autoImgs.Where(x => x.Type == (int) MediaType.Server).ToList();
                         foreach (var image in serverVid)
                         {
                             _autoManager.DeleteImage(image.Id, auto.Id, user.Id);
@@ -260,7 +263,7 @@ namespace RollingRides.WebApp.User
                 {
                     if (StringHelper.IsValidImage(fuMainImage.FileName))
                     {
-                        var mainImgs = auto.Images.Where(x => x.MediaType == MediaType.Image && x.IsMainImage == 1);
+                        var mainImgs = autoImgs.Where(x => x.MediaType == MediaType.Image && x.IsMainImage == 1);
                         var imgs1 = new List<RollingRides.WebApp.Components.Datalayer.Models.Image>(mainImgs);
                         foreach (var mainImg in imgs1)
                         {
