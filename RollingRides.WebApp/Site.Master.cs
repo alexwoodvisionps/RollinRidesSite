@@ -46,8 +46,8 @@ namespace RollingRides.WebApp
                 return;
             }
             var name = user.Username;
-            
-            if (user.LastName != null && user.FirstName != null)
+
+            if (!string.IsNullOrEmpty(user.LastName) && !string.IsNullOrEmpty(user.FirstName))
                 name = user.FirstName + " " + user.LastName;
             lblUsername.Text = "Hello "+ name;
             

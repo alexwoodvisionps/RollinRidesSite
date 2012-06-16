@@ -57,6 +57,7 @@ namespace RollingRides.WebApp.User
                 user.ZipCode = txtZipCode.Text;
                 user.LastName = txtLastName.Text;
                 user.FirstName = txtFirstName.Text;
+                user.PhoneNumber = txtPhone.Text;
                 user.CompanyName = txtCompanyName.Text;
                 _userManager.AddUpdate(user, user.UserType);
             }

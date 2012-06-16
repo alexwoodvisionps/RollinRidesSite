@@ -127,14 +127,14 @@ namespace RollingRides.WebApp.Components.BusinessLogic
 		{
 			List<Image> imgs = null;
 			_autoRepo.Delete (id, out imgs);
-			foreach(var img in imgs)
-			{
-				if(((int)img.Type) != ((int)MediaType.Youtube))
-					if(File.Exists(ConfigurationManager.AppSettings["MediaRootDir"] + img.Url))
-					{
-						File.Delete(ConfigurationManager.AppSettings["MediaRootDir"] + img.Url);
-					}
-			}
+            //foreach(var img in imgs)
+            //{
+            //    if(((int)img.Type) != ((int)MediaType.Youtube))
+            //        if(File.Exists(ConfigurationManager.AppSettings["MediaRootDir"] + img.Url))
+            //        {
+            //            File.Delete(ConfigurationManager.AppSettings["MediaRootDir"] + img.Url);
+            //        }
+            //}
 		}
 		
 		public List<Automobile> GetAllVehicles (bool onlyApproved)

@@ -57,15 +57,15 @@
               <i class="icon-user" ></i> <asp:Label ID="lblUsername" runat="server" />
               <span class="caret"></span>
             </div>
-            <ul class="dropdown-menu">
-              <li><a style="color: #FFFFFF; font-weight: bold" href="/User/MyAccount.aspx">My Account</a></li>
+            <ul class="dropdown-menu" style="padding-left: 200">
+              <li><a style="color: #EEEE00; font-weight: bold" href="/User/MyAccount.aspx">My Account</a></li>
               <li class="divider"></li>
               <li><asp:LinkButton ID="btnSignOut" runat="server" Text="Sign Out" OnClick="SignOut" /></li>
             </ul>
           </div>
           <div class="nav-collapse">
             <ul class="nav">
-              <li class="active"><a href="~/Default.aspx">Home</a></li>
+              <li class="active"><a href="/Default.aspx">Home</a></li>
               <li class="active"><a href="/Login.aspx">Login</a></li>
               <li class="active"><a href="/SignUp.aspx">Sign Up</a></li>
               <li class="active"><a href="/About.aspx">About</a></li>
@@ -91,6 +91,10 @@
               <li><a href="/AutoListing.aspx">Auto Listing</a></li>
               <li><a href="/AutoSearch.aspx">Auto Search</a></li>
               <li><a href="/User/MyAccount.aspx">My Account</a></li>
+              <li><a href="/Login.aspx">Login</a></li>
+              <li><a href="/SignUp.aspx">Sign Up</a></li>
+              <li><a href="/About.aspx">About</a></li>
+              <li><a href="/Contact.aspx">Contact</a></li>
               <li><asp:Literal ID="litSideAd" runat="server" /></li>
             </ul>
           </div><!--/.well -->
@@ -118,7 +122,7 @@
         <div>
         By using this site, you agree to the <a href="/TermsAndConditions.aspx">Terms and Conditions</a> of using this site.
         </div>
-        <p>&copy; Rolling Rides <%= DateTime.Now.Year %></p>
+        <p>&copy; Rollin Rides <%= DateTime.Now.Year %></p>
         <p>
             &copy; Wooden Software Development Inc <%= DateTime.Now.Year %> 
         </p>

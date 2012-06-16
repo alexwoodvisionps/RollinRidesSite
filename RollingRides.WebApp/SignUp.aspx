@@ -12,11 +12,11 @@
   Username:  <asp:TextBox ID="txtUsername" runat="server" />
 </div>
 <div>
-   Password: <asp:TextBox ID="txtPassword" runat="server" />
+   Password: <asp:TextBox ID="txtPassword" runat="server" TextMode="Password" />
     
 </div>
 <div>
-   Confirm Password:  <asp:TextBox ID="txtPasswordConfirm" runat="server" />
+   Confirm Password:  <asp:TextBox ID="txtPasswordConfirm" runat="server" TextMode="Password" />
 </div>
 <div>
 Email: <asp:TextBox ID="txtEmail" runat="server" />

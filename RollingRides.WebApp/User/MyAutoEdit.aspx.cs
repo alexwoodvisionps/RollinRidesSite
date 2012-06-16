@@ -55,7 +55,7 @@ namespace RollingRides.WebApp.User
                     txtMinDownPayment.Text = auto.MinimumDownPayment.ToString();
                     cbxFianacing.Checked = auto.HasFinancing == 1;
                     cbxUsed.Checked = auto.IsUsed == 1;
-                    cbxUserMyInfo.Visible = false;
+                    //cbxUserMyInfo.Visible = false;
                 }
             }
             int id;
@@ -106,7 +106,7 @@ namespace RollingRides.WebApp.User
                       //  txtYoutube.Text = img.Url;
                         //break;
                     case (int)MediaType.Server:
-                        lblVideo.Text = img.Url;
+                        lblVideo.Text = "<a href='" + img.Url + "'>Previous Video</a>";
                         break;
                 }
             }
@@ -225,15 +225,15 @@ namespace RollingRides.WebApp.User
                 autoImgs = autoImgs.Where(x => (x.MediaType != MediaType.Image) || (x.IsMainImage == 1)).ToList();
                 
                 foreach (var file in
-                    Request.Files.AllKeys.Select(fileStr => Request.Files[fileStr]).Where(file => file.ContentLength <= 5000000).Where(file => !string.IsNullOrEmpty(file.FileName) && file.FileName != fuMainImage.FileName))
+                    Request.Files.AllKeys.Select(fileStr => Request.Files[fileStr]).Where(file => file.ContentLength <= 10000000).Where(file => !string.IsNullOrEmpty(file.FileName) && file.FileName != fuMainImage.FileName))
                 {
                     if(StringHelper.IsValidCarFax(file.FileName))
                     {
-                        if(!string.IsNullOrEmpty(auto.CarfaxReportPath))
+                        if(!string.IsNullOrEmpty(auto.CarfaxReportPath) && File.Exists(Server.MapPath(auto.CarfaxReportPath)))
                             File.Delete(Server.MapPath(auto.CarfaxReportPath));
                         var theG = Guid.NewGuid();
-                        auto.CarfaxReportPath = ConfigurationManager.AppSettings["CarfaxPathUrl"] + theG.ToString() + file.FileName;
-                        fuCarFax.SaveAs(Server.MapPath(ConfigurationManager.AppSettings["CarfaxPathUrl"]) + theG.ToString() + file.FileName);
+                        auto.CarfaxReportPath = ConfigurationManager.AppSettings["CarfaxPathUrl"] + theG.ToString() + StringHelper.MakeFileSafe(file.FileName);
+                        fuCarFax.SaveAs(Server.MapPath(ConfigurationManager.AppSettings["CarfaxPathUrl"]) + theG.ToString() + StringHelper.MakeFileSafe(file.FileName));
                         continue;
                         
                     }
@@ -246,18 +246,35 @@ namespace RollingRides.WebApp.User
                                       IsMainImage = file.FileName == fuMainImage.FileName ? 1 : 0,
                                       Url = ConfigurationManager.AppSettings["imagesFolder"] + theGuid + StringHelper.MakeFileSafe(file.FileName)
                                   };
-                    if(fileType == MediaType.Server)
+                    if (fileType == MediaType.Server)
                     {
-                        var serverVid = autoImgs.Where(x => x.Type == (int) MediaType.Server).ToList();
+                        if (!fuVideo.HasFile)
+                            continue;
+                        var serverVid = autoImgs.Where(x => x.Type == (int)MediaType.Server).ToList();
                         foreach (var image in serverVid)
                         {
                             _autoManager.DeleteImage(image.Id, auto.Id, user.Id);
                             File.Delete(Server.MapPath(image.Url));
                         }
-                    }
-                    auto.Images.Add(img);
+                        fuVideo.SaveAs(Server.MapPath(ConfigurationManager.AppSettings["imagesFolder"]) + theGuid + StringHelper.MakeFileSafe(file.FileName));
+                        var img1 = new RollingRides.WebApp.Components.Datalayer.Models.Image
+                                       {
+                                           Url = ConfigurationManager.AppSettings["imagesFolder"] + theGuid +
+                                                 StringHelper.MakeFileSafe(file.FileName),
+                                           Type = (int)MediaType.Server,
+                                           AutomobileId = auto.Id,
+                                           IsMainImage = 0
+                                       };
 
-                    file.SaveAs(Server.MapPath(ConfigurationManager.AppSettings["imagesFolder"]) + theGuid + StringHelper.MakeFileSafe(file.FileName));
+                        auto.Images.Add(img1);
+                    }
+                    else
+                    {
+                        auto.Images.Add(img);
+
+                        file.SaveAs(Server.MapPath(ConfigurationManager.AppSettings["imagesFolder"]) + theGuid +
+                                    StringHelper.MakeFileSafe(file.FileName));
+                    }
                 }
                 if(fuMainImage.HasFile)
                 {

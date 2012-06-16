@@ -40,6 +40,8 @@ namespace RollingRides.WebApp.User
             try
             {
                 userLogic.ChangePassword(user.Id, txtOldPassword.Text, txtPassword.Text);
+
+                lblError.Text = "Password Successfully Changed!";
             }
             catch(Exception ex)
             {

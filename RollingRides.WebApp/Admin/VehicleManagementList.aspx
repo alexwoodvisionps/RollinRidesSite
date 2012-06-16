@@ -11,17 +11,16 @@
 
 <asp:GridView ID="gvAutos" runat="server" AutoGenerateColumns="false" AllowPaging="true" AllowSorting="true"  EmptyDataText="No Vehicles">
     <Columns>
-        
+        <asp:BoundField DataField="Id" HeaderText="Automobile System Id" SortExpression="Id" />
         <asp:BoundField DataField="Make" HeaderText="Make" SortExpression="Make"/>
         <asp:BoundField DataField="Model" HeaderText="Model" SortExpression="Model" />
         <asp:BoundField DataField="Year" HeaderText="Year" SortExpression="Year" />
+        <asp:BoundField DataField="Color" HeaderText="Color" SortExpression="Color" />
         <asp:BoundField DataField="IsApproved" HeaderText="Is Approved?" SortExpression="IsApproved" />
         <asp:BoundField DataField="IsHighlight" HeaderText="Is Highlight?" SortExpression="IsHighlight" />
-        <asp:BoundField DataField="Seller.CompanyName" HeaderText="Company Name"  />
-        <asp:BoundField DataField="Seller.LastName" HeaderText="Seller Last Name"  />
-        <asp:BoundField DataField="Seller.FirstName" HeaderText="Seller First Name"  />
-        <asp:BoundField DataField="PhoneNumber" HeaderText="Seller Phone" />
-        <asp:BoundField DataField="Seller.Email" HeaderText="Seller Email" />
+        <asp:BoundField DataField="ContactName" HeaderText="Contact Name"  />
+        <asp:BoundField DataField="PhoneNumber" HeaderText="Seller's Phone" />
+        <asp:BoundField DataField="UserId" HeaderText="Seller's Id" />
         <asp:TemplateField>
             <ItemTemplate>
                 <asp:Image ID="imgMain" runat="server" />
@@ -32,7 +31,7 @@
               <%--  
                 <asp:Button ID="btnDetail" OnClick="btnDetails_Click" Text="Details" runat="server" CommandArgument='<%# DataBinder.Eval(Container, "Id") %>' />
                --%>
-                <asp:Button ID="btnDelete" OnClick="btnDelete_Click" OnClientClick="return ConfirmIt();" CommandArgument='<%# Eval("Id")  %>' runat="server" />
+                <asp:Button ID="btnDelete" OnClick="btnDelete_Click" OnClientClick="return ConfirmIt();" Text="Delete" CommandArgument='<%# Eval("Id")  %>' runat="server" />
 
             </ItemTemplate>
         </asp:TemplateField>

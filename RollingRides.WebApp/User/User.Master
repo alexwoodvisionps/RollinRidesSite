@@ -59,7 +59,7 @@
               <span class="caret"></span>
             </div>
             <ul class="dropdown-menu">
-              <li><a style="color: #FFFFFF; font-weight: bold" href="~/User/MyAccount.aspx">My Account Home</a></li>
+              <li><a style="color: #EEEE00; font-weight: bold" href="~/User/MyAccount.aspx">My Account Home</a></li>
               <li class="divider"></li>
               <li><asp:Button ID="btnSignOut" runat="server" Text="Sign Out" OnClick="SignOut" /></li>
             </ul>

@@ -37,8 +37,8 @@ namespace RollingRides.WebApp.Components.Datalayer.Repositories
             var dt = ExecuteQuery("SELECT * FROM Advertisements WHERE Location =  " + location);
             if(dt.Rows.Count > 0)
             {
-                var rnd = new Random(1000);
-                var index = Math.Abs(rnd.Next(dt.Rows.Count - 1));
+                var rnd = new Random();
+                var index = Math.Abs(rnd.Next()) % dt.Rows.Count;
                 return dt.Rows[index].DataRowToModel<Advertisement>(new Advertisement());
             }
             return null;

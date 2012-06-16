@@ -28,16 +28,18 @@ namespace RollingRides.WebApp.Admin
                 ViewState["sortDirection"] = "ASC";
                 ViewState["sortField"] = "Make";
             }
-            BindData();
             gvAutos.Sorting += new GridViewSortEventHandler(gvAutos_Sorting);
             gvAutos.PageIndexChanging += new GridViewPageEventHandler(gvAutos_PageIndexChanging);
             gvAutos.RowCreated += new GridViewRowEventHandler(gvAutos_RowCreated);
+            BindData();
+           
         }
 
         protected void btnApprove_Click(object sender, EventArgs e)
         {
             var btn = sender as Button;
             Update(btn, 1);
+            BindData();
         }
         private void Update(Button btn, int value)
         {
@@ -52,29 +54,33 @@ namespace RollingRides.WebApp.Admin
         protected void btnUnapprove_Click(object sender, EventArgs e)
         {
             Update((Button)sender, 0);
+            BindData();
         }
 
         protected void gvAutos_RowCreated(object sender, GridViewRowEventArgs e)
         {
 
-            if (e.Row.Cells.Count < 11 || e.Row.Cells[10].Controls.Count < 5)
+            if(!(e.Row.DataItem is Automobile))
                 return;
-            var isApproved = e.Row.Cells[3].Text;
-            e.Row.Cells[3].Text = isApproved == "1" ? "Yes" : "No";
-            var btnA = e.Row.Cells[10].FindControl("btnApprove");
-            var btnU = e.Row.Cells[10].FindControl("btnUnapprove");
-            btnU.Visible = isApproved == "1";
-            btnA.Visible = isApproved == "0";
+            var auto = e.Row.DataItem as Automobile;
             
-            var btnMh = e.Row.Cells[10].FindControl("btnMakeHighlight");
-            var btnRh = e.Row.Cells[10].FindControl("btnRemoveHighlight");
-            var isHighlight = e.Row.Cells[4].Text;
+            e.Row.Cells[3].Text = auto.IsApproved == 1 ? "Yes" : "No";
+            var btnA = e.Row.Cells[9].FindControl("btnApprove");
+            var btnU = e.Row.Cells[9].FindControl("btnUnapprove");
+            btnU.Visible = auto.IsApproved == 1;
+            btnA.Visible = auto.IsApproved == 0;
+            
+            var btnMh = e.Row.Cells[9].FindControl("btnMakeHighlight");
+            var btnRh = e.Row.Cells[9].FindControl("btnRemoveHighlight");
+            var isHighlight = auto.IsHighlight.ToString();
             e.Row.Cells[4].Text = isHighlight == "1" ? "Yes" : "No";
             btnMh.Visible = isHighlight == "0";
             btnRh.Visible = isHighlight == "1";
             var img = e.Row.Cells[9].FindControl("imgMain") as Image;
             var image =
-                _autoManager.GetImagesByAutoId(int.Parse(((Button) btnU).CommandArgument), true).SingleOrDefault();
+                _autoManager.GetImagesByAutoId(auto.Id, true).FirstOrDefault();
+            if (image == null)
+                return;
             img.ImageUrl = image.Url;
 
         }

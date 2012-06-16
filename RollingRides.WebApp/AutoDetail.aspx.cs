@@ -36,13 +36,13 @@ namespace RollingRides.WebApp
                 lblPrice.Text = StringHelper.FormatCurrency(auto.Price);
                 lblColor.Text = auto.Color;
                 ViewState["auto"] = auto;
+                hfId.Value = auto.Id.ToString();
+                if (string.IsNullOrEmpty(auto.CarfaxReportPath))
+                    btnDownloadCarfax.Visible = false;
+                if(!string.IsNullOrEmpty(auto.CarfaxReportPath))
+                    litCarFax.Text = "<a href='" + auto.CarfaxReportPath + "'>View Carfax</a>";
             }
             BindRepeater();
-        }
-
-        protected void btn_Click(object sender, EventArgs e)
-        {
-            throw new NotImplementedException();
         }
         private void BindRepeater()
         {
@@ -77,6 +77,17 @@ namespace RollingRides.WebApp
                 //btn.Click += new EventHandler(btn_Click);
                 //pnlYouTube.Controls.Add(btn);
             }
+        }
+
+        protected void btnDownloadCarfax_Click(object sender, EventArgs e)
+        {
+            var id = int.Parse(hfId.Value);
+            var auto = _autoManager.GetById(id);
+            Response.Clear();
+            Response.ContentType = "application/octet-stream";
+            Response.AddHeader("Content-Disposition","attachment;filename=\"" + StringHelper.MakeFileSafe(auto.CarfaxReportPath)  + "\"");
+            Response.TransmitFile(auto.CarfaxReportPath);
+            Response.End();
         }
     }
 }

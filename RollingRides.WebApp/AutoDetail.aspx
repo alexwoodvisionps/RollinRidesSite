@@ -3,11 +3,20 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 <div>
+<asp:HiddenField ID="hfId" runat="server" />
 Car Information:
 <asp:Label ID="lblYearMakeModel" runat="server" />
 </div>
 <div>
+
     Color: <asp:Label ID="lblColor" runat="server" />
+</div>
+<div>
+    <asp:Literal ID="litCarFax" runat="server" />
+</div>
+<div>
+    <asp:Button ID="btnDownloadCarfax" runat="server" Text="Download Carfax" 
+        onclick="btnDownloadCarfax_Click"/>
 </div>
 <div>
     Has Financing Option? <asp:Literal ID="litFinancing" runat="server" />

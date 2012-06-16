@@ -25,7 +25,7 @@
         }
         $(document).ready(function () {
             $('#<%=cbxUserMyInfo.ClientID %>').click(function () {
-                if ($(this).attr('checked') && $(this).attr('checked') == 'true') {
+                if ($(this).attr('checked') || $(this).attr('checked') == 'true') {
                     $('#ContactPanel').hide();
                 }
                 else {
@@ -170,7 +170,7 @@ Youtube Video Link: <asp:TextBox ID="txtYoutube" runat="server" />
 </div>
 <div>
 
-  Car Video File: <asp:FileUpload ID="fuVideo" runat="server" />  (5mb max)
+  Car Video File: <asp:FileUpload ID="fuVideo" runat="server" />  (10mb max)
 </div>
 <div>
 Main Image: <asp:Image runat="server" ID="imgMainImage" Visible="false" />
