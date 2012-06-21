@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content="" />
     <meta name="author" content="" />
-
+    <link href="/css/facebook.css" rel="Stylesheet" />
     <link href="/css/jquery-ui-1.8.18.custom.css" rel="Stylesheet" />
     <link href="/css/bootstrap.css" rel="Stylesheet" />
     <style type="text/css">
@@ -37,11 +37,66 @@
     <script type="text/javascript" src="/js/jquery-1.7.2.min.js" ></script>
     <script type="text/javascript" src="/js/jquery-ui-1.8.18.custom.min.js" ></script>
     <script type="text/javascript" src="/js/bootstrap.js" ></script>
+    <script src="http://platform.twitter.com/anywhere.js?id=APIKey&v=1" type="text/javascript"></script>
+    <script type="text/javascript" >
+       $(document).ready(function () {
+            $('.twitterFollow').click(function () {
+                twttr.anywhere(function (twitter) {
+                    twitter(".twitterFollow").followButton("RollinRides");
+                });
+            });
+            $('.twitterPost').click(function () {
+                twttr.anywhere(function (twitter) {
+                if (twitter.isConnected()) {
+                    $(".comments > .add > .author").html('<img src="' + twitter.currentUser.data('profile_image_url') + '" /> <a href="http://twitter.com/' + twitter.currentUser.data('screen_name') + '">' + twitter.currentUser.data('screen_name') + '</a> | <a href="javascript:twttr.anywhere.signOut();">Sign out</a>');
+                    twitter(".comments > .add").tweetBox({
+                        label: 'What do you think about this article?',
+                        defaultContent: '#RollinRides '
+                    });
+                } 
+                
+            });
+            $('.twitterConnect').click(function(){
+                twttr.anywhere(function (twitter) {
+                twitter(".comments > .add").connectButton({  
+                        authComplete: function(user) {  
+                            location.reload();  
+                        },  
+                        signOut: function() {  
+                            location.reload();  
+                        }  
+                    });  
+                });
+            });
+        });
+    </script>
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
   </head>
 
   <body>
+  <div id="fb-root"></div>
+<script type="text/javascript">
+    window.fbAsyncInit = function () {
+        FB.init({
+            appId: '176481849125691', // App ID
+            channelUrl: 'http://facebook.staging.iprint.visionps.com/channel.html', // Channel File
+            status: true, // check login status
+            cookie: true, // enable cookies to allow the server to access the session
+            xfbml: true  // parse XFBML
+        });
+
+        // Additional initialization code here
+    };
+
+    // Load the SDK Asynchronously
+    (function (d) {
+        var js, id = 'facebook-jssdk'; if (d.getElementById(id)) { return; }
+        js = d.createElement('script'); js.id = id; js.async = true;
+        js.src = "//connect.facebook.net/en_US/all.js";
+        d.getElementsByTagName('head')[0].appendChild(js);
+    } (document));
+</script>
     <form id="form1" runat="server"> 
     <div class="navbar navbar-fixed-top">
       <div class="navbar-inner">

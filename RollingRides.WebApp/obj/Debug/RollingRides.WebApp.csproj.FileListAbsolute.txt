@@ -2,3 +2,12 @@ C:\AlexTest\PRivate\RollingRides.WebApp\RollingRides.WebApp\bin\RollingRides.Web
 C:\AlexTest\PRivate\RollingRides.WebApp\RollingRides.WebApp\bin\RollingRides.WebApp.pdb
 C:\AlexTest\PRivate\RollingRides.WebApp\RollingRides.WebApp\obj\Debug\RollingRides.WebApp.dll
 C:\AlexTest\PRivate\RollingRides.WebApp\RollingRides.WebApp\obj\Debug\RollingRides.WebApp.pdb
+C:\AlexTest\PRivate\RollingRides.WebApp\RollingRides.WebApp\bin\Newtonsoft.Json.dll
+C:\AlexTest\PRivate\RollingRides.WebApp\RollingRides.WebApp\bin\Newtonsoft.Json.xml
+C:\AlexTest\PRivate\RollingRides.WebApp\RollingRides.WebApp\obj\Debug\RollingRides.WebApp.csprojResolveAssemblyReference.cache
+C:\AlexTest\PRivate\RollingRides.WebApp\RollingRides.WebApp\bin\Twitterizer2.Asynchronous.dll
+C:\AlexTest\PRivate\RollingRides.WebApp\RollingRides.WebApp\bin\Twitterizer2.dll
+C:\AlexTest\PRivate\RollingRides.WebApp\RollingRides.WebApp\bin\Twitterizer2.Streaming.dll
+C:\AlexTest\PRivate\RollingRides.WebApp\RollingRides.WebApp\bin\Twitterizer2.xml
+C:\AlexTest\PRivate\RollingRides.WebApp\RollingRides.WebApp\bin\Twitterizer2.Asynchronous.xml
+C:\AlexTest\PRivate\RollingRides.WebApp\RollingRides.WebApp\bin\Twitterizer2.Streaming.xml

@@ -1,0 +1,12 @@
+﻿.facebookpic
+{
+    width: 190; 
+    height: 190;
+}
+.facebookbutton
+{
+    background-image: url('images/facebook-login-button.png');
+    background-repeat: no-repeat;    
+    width: 152px;
+    height: 22px;
+}
