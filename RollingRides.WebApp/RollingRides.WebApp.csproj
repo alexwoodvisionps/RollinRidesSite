@@ -73,10 +73,6 @@
     <Content Include="Admin\VehicleManagementForm.aspx" />
     <Content Include="Admin\VehicleManagementList.aspx" />
     <Content Include="AdvertiseWithUs.aspx" />
-    <Content Include="App_Data\RollingRides.mdf" />
-    <Content Include="App_Data\RollingRides_log.ldf">
-      <DependentUpon>RollingRides.mdf</DependentUpon>
-    </Content>
     <Content Include="AutoDetail.aspx" />
     <Content Include="AutoListing.aspx" />
     <Content Include="AutoSearch.aspx" />
@@ -113,6 +109,7 @@
     <Content Include="js\jquery-1.7.2.min.js" />
     <Content Include="js\jquery-ui-1.8.18.custom.min.js" />
     <Content Include="js\jquery.1.7.1.min.js" />
+    <Content Include="js\jquery.carouFredSel-5.6.1.js" />
     <Content Include="js\twitterjs-2.0.0.min.js" />
     <Content Include="Login.aspx" />
     <Content Include="ResetPassword.aspx" />
@@ -351,6 +348,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="advertisements\" />
+    <Folder Include="App_Data\" />
     <Folder Include="carfaxes\" />
     <Folder Include="media\" />
     <Folder Include="settings\" />

@@ -39,9 +39,21 @@ namespace RollingRides.WebApp.Components.BusinessLogic
 	    {
 	        return _autoRepo.Search(make, model, minPrice, maxPrice);
 	    }
+        private static void FixNulls(Automobile auto)
+        {
+            auto.State = auto.State ?? "IL";
+            auto.Street1 = auto.Street1 ?? "";
+            auto.Street2 = auto.Street2 ?? "";
+            auto.PhoneNumber = auto.PhoneNumber ?? "";
+            auto.ZipCode = auto.ZipCode ?? "";
+            auto.Description = auto.Description ?? "";
+            auto.Color = auto.Color ?? "Not Given";
+            auto.ContactName = auto.ContactName ?? "Not Given";
+        }
 
 	    public Automobile AddUpdate(Automobile auto, UserType type)
-        {
+	    {
+	        FixNulls(auto);
             return _autoRepo.AddUpdate(auto, type);
         }
         public IEnumerable<Image> GetImagesByAutoId(int autoId, bool onlyMainImage)

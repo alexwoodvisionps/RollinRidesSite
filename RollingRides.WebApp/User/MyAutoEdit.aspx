@@ -40,28 +40,30 @@
         });
         
 </script>
-
+<div>
+* means required
+</div>
 <asp:Label ID="lblError" runat="server" />
 <div>
 Id: <asp:Label ID="lblId" runat="server" />
 </div>
 <div>
-Make: <asp:TextBox ID="txtMake" runat="server" />
+* Make: <asp:TextBox ID="txtMake" runat="server" />
 </div>
 <div>
-Model: <asp:TextBox ID="txtModel" runat="server" />
+* Model: <asp:TextBox ID="txtModel" runat="server" />
 </div>
 <div>
-Year: <asp:DropDownList ID="ddlYear" runat="server" />
+* Year: <asp:DropDownList ID="ddlYear" runat="server" />
 </div>
 <div>
-    Price: <asp:TextBox ID="txtPrice" runat="server" />
+ * Price: <asp:TextBox ID="txtPrice" runat="server" />
 </div>
 <div>
-    Color: <asp:TextBox ID="txtColor" runat="server" />
+  * Color: <asp:TextBox ID="txtColor" runat="server" />
 </div>
 <div>
-    Financing Available? Yes: <asp:CheckBox ID="cbxFianacing" runat="server" /> 
+  *  Financing Available? Yes: <asp:CheckBox ID="cbxFianacing" runat="server" /> 
 </div>
 <div>
     Minimum Down Payment: <asp:TextBox ID="txtMinDownPayment" runat="server" />
@@ -70,7 +72,7 @@ Year: <asp:DropDownList ID="ddlYear" runat="server" />
 Check if the car is used? <asp:CheckBox ID="cbxUsed" Checked="true" runat="server" />
 </div>
 <div>
-Title: <asp:TextBox ID="txtTitle" runat="server" />
+* Title: <asp:TextBox ID="txtTitle" runat="server" />
 </div>
 <div>
 Description: <asp:TextBox TextMode="MultiLine" ID="txtDescription" runat="server" MaxLength="1000" Width="150" Height="300"  />

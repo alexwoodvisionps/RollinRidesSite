@@ -2,6 +2,8 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+
+<script type="text/javascript" src="js/jquery.carouFredSel-5.6.1.js" ></script>
 <script type="text/javascript">
     function shareLinkFacebook() {
         FB.login(function (response) {
@@ -21,6 +23,9 @@
         });
         return true;
     }
+    $(document).ready(function () {
+        $('#carousel').carouFredSel();
+    });
 </script>
 <div>
     <a onclick="shareLinkFacebook();"><img alt="Share On Facebook" src="/img/facebookShare.jpg" /></a>
@@ -43,7 +48,7 @@ Car Information:
         onclick="btnDownloadCarfax_Click"/>
 </div>
 <div>
-    Has Financing Option? <asp:Literal ID="litFinancing" runat="server" />
+   * Has Financing Option? <asp:Literal ID="litFinancing" runat="server" />
 </div>
 <div>
    Price: <asp:Label ID="lblPrice" runat="server" />
@@ -77,7 +82,7 @@ At
 <div>
 Pictures:
 </div>
-<div>
+<div id="carousel">
     <asp:Repeater ID="rptImages" runat="server" >
         <ItemTemplate>
             <asp:Image ID="img" runat="server" ImageUrl='<%# Eval("Url") %>' />
