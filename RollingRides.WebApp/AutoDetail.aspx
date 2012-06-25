@@ -85,7 +85,7 @@ Pictures:
 <div id="carousel">
     <asp:Repeater ID="rptImages" runat="server" >
         <ItemTemplate>
-            <asp:Image ID="img" runat="server" ImageUrl='<%# Eval("Url") %>' />
+            <asp:Image Width="200" Height="100" ID="img" runat="server" ImageUrl='<%# Eval("Url") %>' />
         </ItemTemplate>
     </asp:Repeater>
 </div>
