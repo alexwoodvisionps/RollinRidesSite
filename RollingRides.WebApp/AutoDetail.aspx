@@ -1,5 +1,66 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="AutoDetail.aspx.cs" Inherits="RollingRides.WebApp.AutoDetail" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+
+<style type="text/css">
+
+    .image_carousel {
+	    padding: 15px 0 15px 40px;
+	    position: relative;
+	}
+	.image_carousel img {
+	    border: 1px solid #ccc;
+	    background-color: white;
+	    padding: 9px;
+	    margin: 7px;
+	    display: block;
+	    float: left;
+	}
+	a.prev, a.next {
+	    background: url(../images/miscellaneous_sprite.png) no-repeat transparent;
+	    width: 45px;
+	    height: 50px;
+	    display: block;
+	    position: absolute;
+	    top: 85px;
+	}
+	a.prev {            left: -22px;
+	                    background-position: 0 0; }
+	a.prev:hover {      background-position: 0 -50px; }
+	a.prev.disabled {   background-position: 0 -100px !important;  }
+	a.next {            right: -22px;
+	                    background-position: -50px 0; }
+	a.next:hover {      background-position: -50px -50px; }
+	a.next.disabled {   background-position: -50px -100px !important;  }
+	a.prev.disabled, a.next.disabled {
+	    cursor: default;
+	}
+	 
+	a.prev span, a.next span {
+	    display: none;
+	}
+	.pagination {
+	    text-align: center;
+	}
+	.pagination a {
+	    background: url(../images/miscellaneous_sprite.png) 0 -300px no-repeat transparent;
+	    width: 15px;
+	    height: 15px;
+      margin: 0 5px 0 0;
+	    display: inline-block;
+	}
+	.pagination a.selected {
+	    background-position: -25px -300px;
+	    cursor: default;
+	}
+	.pagination a span {
+	    display: none;
+	}
+	.clearfix {
+	    float: none;
+	    clear: both;
+	}
+</style>
+
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
@@ -24,7 +85,23 @@
         return true;
     }
     $(document).ready(function () {
-        $('#carousel').carouFredSel();
+        $('#carousel').carouFredSel();//{
+//            circular: false,
+//            infinite: false,
+//            auto: false,
+//            scroll: {
+//                items: "page"
+//            },
+//            prev: {
+//                button: "#prevBtn",
+//                key: "left"
+//            },
+//            next: {
+//                button: "#nextBtn",
+//                key: "right"
+//            },
+//            pagination: "#pagination"
+//        });
     });
 </script>
 <div>
@@ -87,8 +164,14 @@ Pictures:
         <ItemTemplate>
             <asp:Image Width="200" Height="100" ID="img" runat="server" ImageUrl='<%# Eval("Url") %>' />
         </ItemTemplate>
+        
     </asp:Repeater>
-</div>
+     <br />
+     <br />
+	        <a class="prev" id="prevBtn" href="#"><span>prev</span></a>
+	        <a class="next" id="nextBtn" href="#"><span>next</span></a>
+	        <div class="pagination" id="pagination"></div>
+    </div>
 <%--<div>
     Tweet about this automobile!
 </div>

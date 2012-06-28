@@ -9,7 +9,6 @@
   </SettingsComponent>
   <RecentFiles>
     <RecentFiles>
-      <File id="F9EBAD61-151A-4092-904F-2410415F7BE7/f:AdvertiseWithUs.aspx" caret="377" fromTop="4" />
       <File id="F9EBAD61-151A-4092-904F-2410415F7BE7/d:Components/d:Datalayer/d:Repositories/f:AutomobileRepository.cs" caret="9587" fromTop="23" />
       <File id="F9EBAD61-151A-4092-904F-2410415F7BE7/d:Components/d:BusinessLogic/d:Common/f:StringHelper.cs" caret="1456" fromTop="15" />
       <File id="F9EBAD61-151A-4092-904F-2410415F7BE7/f:AutoListing.aspx.cs" caret="1359" fromTop="15" />
@@ -22,55 +21,56 @@
       <File id="F9EBAD61-151A-4092-904F-2410415F7BE7/d:User/f:User.Master.cs" caret="951" fromTop="21" />
       <File id="F9EBAD61-151A-4092-904F-2410415F7BE7/f:SignUp.aspx" caret="858" fromTop="18" />
       <File id="F9EBAD61-151A-4092-904F-2410415F7BE7/d:User/f:ChangePassword.aspx.cs" caret="1592" fromTop="21" />
-      <File id="F9EBAD61-151A-4092-904F-2410415F7BE7/f:Web.config" caret="723" fromTop="18" />
       <File id="F9EBAD61-151A-4092-904F-2410415F7BE7/d:Components/d:Datalayer/d:Repositories/f:UserRepository.cs" caret="7849" fromTop="13" />
-      <File id="F9EBAD61-151A-4092-904F-2410415F7BE7/d:Components/d:BusinessLogic/f:AutomobileManager.cs" caret="4442" fromTop="10" />
       <File id="F9EBAD61-151A-4092-904F-2410415F7BE7/d:User/f:MyVehicles.aspx" caret="980" fromTop="15" />
       <File id="F9EBAD61-151A-4092-904F-2410415F7BE7/d:User/f:User.Master" caret="2736" fromTop="13" />
       <File id="F9EBAD61-151A-4092-904F-2410415F7BE7/d:User/f:MyAccount.aspx.cs" caret="87" fromTop="1" />
-      <File id="F9EBAD61-151A-4092-904F-2410415F7BE7/d:User/f:MyAutoEdit.aspx" caret="6351" fromTop="13" />
       <File id="F9EBAD61-151A-4092-904F-2410415F7BE7/d:User/f:MyVehicles.aspx.cs" caret="1417" fromTop="14" />
       <File id="F9EBAD61-151A-4092-904F-2410415F7BE7/d:User/f:MyAutoEdit.aspx.cs" caret="10053" fromTop="0" />
       <File id="F9EBAD61-151A-4092-904F-2410415F7BE7/f:Site.Master.cs" caret="1721" fromTop="22" />
       <File id="F9EBAD61-151A-4092-904F-2410415F7BE7/d:js/f:twitterjs-2.0.0.min.js" caret="0" fromTop="0" />
       <File id="F9EBAD61-151A-4092-904F-2410415F7BE7/f:Default.aspx" caret="1527" fromTop="25" />
       <File id="F9EBAD61-151A-4092-904F-2410415F7BE7/d:Components/d:Datalayer/d:Repositories/f:AdvertisementRepository.cs" caret="1869" fromTop="18" />
-      <File id="F9EBAD61-151A-4092-904F-2410415F7BE7/f:AutoDetail.aspx.cs" caret="4285" fromTop="12" />
-      <File id="F9EBAD61-151A-4092-904F-2410415F7BE7/f:AutoListing.aspx" caret="1225" fromTop="17" />
       <File id="F9EBAD61-151A-4092-904F-2410415F7BE7/f:Site.Master" caret="382" fromTop="8" />
-      <File id="F9EBAD61-151A-4092-904F-2410415F7BE7/f:AutoDetail.aspx" caret="337" fromTop="3" />
+      <File id="F9EBAD61-151A-4092-904F-2410415F7BE7/f:Web.config" caret="590" fromTop="16" />
+      <File id="F9EBAD61-151A-4092-904F-2410415F7BE7/f:Twitterizer2.license.txt" caret="0" fromTop="0" />
+      <File id="F9EBAD61-151A-4092-904F-2410415F7BE7/d:Components/d:BusinessLogic/f:AutomobileManager.cs" caret="2086" fromTop="19" />
+      <File id="F9EBAD61-151A-4092-904F-2410415F7BE7/d:User/f:MyAutoEdit.aspx" caret="6978" fromTop="25" />
+      <File id="F9EBAD61-151A-4092-904F-2410415F7BE7/f:AutoListing.aspx" caret="1286" fromTop="18" />
+      <File id="F9EBAD61-151A-4092-904F-2410415F7BE7/f:AutoDetail.aspx.cs" caret="4285" fromTop="12" />
+      <File id="F9EBAD61-151A-4092-904F-2410415F7BE7/f:AutoDetail.aspx" caret="2786" fromTop="6" />
     </RecentFiles>
     <RecentEdits>
-      <File id="F9EBAD61-151A-4092-904F-2410415F7BE7/d:User/f:MyAutoEdit.aspx.cs" caret="4932" fromTop="20" />
-      <File id="F9EBAD61-151A-4092-904F-2410415F7BE7/d:User/f:MyAutoEdit.aspx.cs" caret="10794" fromTop="6" />
-      <File id="F9EBAD61-151A-4092-904F-2410415F7BE7/f:AutoDetail.aspx" caret="1474" fromTop="14" />
-      <File id="F9EBAD61-151A-4092-904F-2410415F7BE7/f:AutoDetail.aspx.cs" caret="1920" fromTop="23" />
-      <File id="F9EBAD61-151A-4092-904F-2410415F7BE7/d:Components/d:Datalayer/d:Repositories/f:AdvertisementRepository.cs" caret="1869" fromTop="18" />
-      <File id="F9EBAD61-151A-4092-904F-2410415F7BE7/f:Site.Master" caret="3630" fromTop="24" />
-      <File id="F9EBAD61-151A-4092-904F-2410415F7BE7/f:Site.Master" caret="4501" fromTop="25" />
-      <File id="F9EBAD61-151A-4092-904F-2410415F7BE7/f:AutoDetail.aspx" caret="954" fromTop="15" />
-      <File id="F9EBAD61-151A-4092-904F-2410415F7BE7/f:AutoDetail.aspx" caret="892" fromTop="14" />
-      <File id="F9EBAD61-151A-4092-904F-2410415F7BE7/f:AutoDetail.aspx" caret="611" fromTop="9" />
-      <File id="F9EBAD61-151A-4092-904F-2410415F7BE7/f:AutoDetail.aspx" caret="402" fromTop="5" />
-      <File id="F9EBAD61-151A-4092-904F-2410415F7BE7/f:AutoDetail.aspx" caret="1114" fromTop="14" />
-      <File id="F9EBAD61-151A-4092-904F-2410415F7BE7/f:Site.Master" caret="3964" fromTop="25" />
-      <File id="F9EBAD61-151A-4092-904F-2410415F7BE7/f:Site.Master" caret="2355" fromTop="19" />
-      <File id="F9EBAD61-151A-4092-904F-2410415F7BE7/f:Site.Master" caret="2011" fromTop="6" />
       <File id="F9EBAD61-151A-4092-904F-2410415F7BE7/f:Site.Master" caret="3097" fromTop="16" />
       <File id="F9EBAD61-151A-4092-904F-2410415F7BE7/f:Site.Master" caret="3186" fromTop="18" />
       <File id="F9EBAD61-151A-4092-904F-2410415F7BE7/f:Site.Master" caret="2910" fromTop="6" />
       <File id="F9EBAD61-151A-4092-904F-2410415F7BE7/f:Site.Master" caret="450" fromTop="9" />
       <File id="F9EBAD61-151A-4092-904F-2410415F7BE7/f:Default.aspx" caret="1185" fromTop="24" />
-      <File id="F9EBAD61-151A-4092-904F-2410415F7BE7/f:AutoDetail.aspx" caret="1250" fromTop="14" />
-      <File id="F9EBAD61-151A-4092-904F-2410415F7BE7/f:AutoDetail.aspx" caret="0" fromTop="0" />
+      <File id="F9EBAD61-151A-4092-904F-2410415F7BE7/f:AutoDetail.aspx" caret="3371" fromTop="14" />
       <File id="F9EBAD61-151A-4092-904F-2410415F7BE7/f:AutoDetail.aspx.cs" caret="4285" fromTop="12" />
       <File id="F9EBAD61-151A-4092-904F-2410415F7BE7/f:AutoDetail.aspx.cs" caret="464" fromTop="12" />
       <File id="F9EBAD61-151A-4092-904F-2410415F7BE7/f:AutoDetail.aspx.cs" caret="4285" fromTop="26" />
       <File id="F9EBAD61-151A-4092-904F-2410415F7BE7/f:AutoDetail.aspx.cs" caret="4285" fromTop="12" />
-      <File id="F9EBAD61-151A-4092-904F-2410415F7BE7/f:AutoDetail.aspx" caret="3181" fromTop="11" />
-      <File id="F9EBAD61-151A-4092-904F-2410415F7BE7/f:AutoDetail.aspx" caret="2597" fromTop="11" />
+      <File id="F9EBAD61-151A-4092-904F-2410415F7BE7/f:AutoDetail.aspx" caret="5565" fromTop="11" />
+      <File id="F9EBAD61-151A-4092-904F-2410415F7BE7/f:AutoDetail.aspx" caret="4981" fromTop="11" />
       <File id="F9EBAD61-151A-4092-904F-2410415F7BE7/f:Site.Master" caret="7300" fromTop="12" />
-      <File id="F9EBAD61-151A-4092-904F-2410415F7BE7/f:AutoDetail.aspx" caret="2374" fromTop="3" />
+      <File id="F9EBAD61-151A-4092-904F-2410415F7BE7/f:AutoDetail.aspx" caret="1922" fromTop="5" />
+      <File id="F9EBAD61-151A-4092-904F-2410415F7BE7/f:Web.config" caret="554" fromTop="15" />
+      <File id="F9EBAD61-151A-4092-904F-2410415F7BE7/d:Components/d:BusinessLogic/f:AutomobileManager.cs" caret="1883" fromTop="11" />
+      <File id="F9EBAD61-151A-4092-904F-2410415F7BE7/d:Components/d:BusinessLogic/f:AutomobileManager.cs" caret="1433" fromTop="2" />
+      <File id="F9EBAD61-151A-4092-904F-2410415F7BE7/f:AutoDetail.aspx" caret="3454" fromTop="9" />
+      <File id="F9EBAD61-151A-4092-904F-2410415F7BE7/f:AutoDetail.aspx" caret="3890" fromTop="25" />
+      <File id="F9EBAD61-151A-4092-904F-2410415F7BE7/f:AutoDetail.aspx" caret="3524" fromTop="12" />
+      <File id="F9EBAD61-151A-4092-904F-2410415F7BE7/d:User/f:MyAutoEdit.aspx" caret="1603" fromTop="4" />
+      <File id="F9EBAD61-151A-4092-904F-2410415F7BE7/d:User/f:MyAutoEdit.aspx" caret="1937" fromTop="20" />
+      <File id="F9EBAD61-151A-4092-904F-2410415F7BE7/d:User/f:MyAutoEdit.aspx" caret="2081" fromTop="20" />
+      <File id="F9EBAD61-151A-4092-904F-2410415F7BE7/d:User/f:MyAutoEdit.aspx" caret="2376" fromTop="19" />
+      <File id="F9EBAD61-151A-4092-904F-2410415F7BE7/f:AutoDetail.aspx" caret="4964" fromTop="18" />
+      <File id="F9EBAD61-151A-4092-904F-2410415F7BE7/f:AutoDetail.aspx" caret="4761" fromTop="15" />
+      <File id="F9EBAD61-151A-4092-904F-2410415F7BE7/f:AutoDetail.aspx" caret="497" fromTop="1" />
+      <File id="F9EBAD61-151A-4092-904F-2410415F7BE7/f:AutoDetail.aspx" caret="475" fromTop="10" />
+      <File id="F9EBAD61-151A-4092-904F-2410415F7BE7/f:AutoDetail.aspx" caret="3223" fromTop="7" />
+      <File id="F9EBAD61-151A-4092-904F-2410415F7BE7/f:AutoDetail.aspx" caret="2786" fromTop="6" />
     </RecentEdits>
   </RecentFiles>
   <NAntValidationSettings>
@@ -121,7 +121,7 @@
       <Item value="Default`0" priority="0" />
       <Item value="object" priority="0" />
       <Item value="where" priority="0" />
-      <Item value="Automobile`0" priority="3" />
+      <Item value="Automobile`0" priority="4" />
       <Item value="User" priority="1" />
       <Item value="out" priority="2" />
       <Item value="IEnumerable" priority="1" />
@@ -141,13 +141,13 @@
       <Item value="loginFrm" priority="3" />
       <Item value="public" priority="4" />
       <Item value="Login`0" priority="0" />
-      <Item value="private" priority="1" />
+      <Item value="private" priority="2" />
       <Item value="static" priority="0" />
       <Item value="readonly" priority="0" />
       <Item value="_userManager" priority="1" />
       <Item value="new" priority="13" />
       <Item value="IUserManager`0" priority="0" />
-      <Item value="auto" priority="19" />
+      <Item value="auto" priority="36" />
       <Item value="delImg" priority="1" />
       <Item value="File`0" priority="1" />
       <Item value="Server" priority="2" />
@@ -217,6 +217,7 @@
       <Item value="TwitterUser" priority="0" />
       <Item value="Entities" priority="0" />
       <Item value="Request" priority="1" />
+      <Item value="void" priority="0" />
     </ItemStatistics>
     <ItemStatistics item="Qualified:RollingRides.WebApp.User.User">
       <Item value="Session" priority="0" />
@@ -295,10 +296,18 @@
     <ItemStatistics item="Qualified:RollingRides.WebApp.Components.Datalayer.Models.Automobile">
       <Item value="Images" priority="5" />
       <Item value="IsApproved" priority="1" />
-      <Item value="Color" priority="5" />
+      <Item value="Color" priority="7" />
       <Item value="IsHighlight" priority="0" />
       <Item value="Id" priority="1" />
       <Item value="CarfaxReportPath" priority="5" />
+      <Item value="State" priority="1" />
+      <Item value="Street1" priority="1" />
+      <Item value="Street2" priority="1" />
+      <Item value="PhoneNumber" priority="1" />
+      <Item value="Make" priority="0" />
+      <Item value="ZipCode" priority="1" />
+      <Item value="Description" priority="1" />
+      <Item value="ContactName" priority="1" />
     </ItemStatistics>
     <ItemStatistics item="Qualified:System.Collections.Generic.List`1">
       <Item value="Where`1" priority="0" />

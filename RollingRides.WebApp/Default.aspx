@@ -17,6 +17,9 @@
     The Rollin Rides Team  
 </div>
 <div>
+    <asp:Literal runat="server" ID="litCoupon"></asp:Literal>
+</div>
+<div>
 Lot Tour:
 </div>
 <div>

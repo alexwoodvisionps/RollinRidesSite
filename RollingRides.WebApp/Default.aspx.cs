@@ -22,7 +22,11 @@ namespace RollingRides.WebApp
             var movieControl = new MovieControl {ID = "MainMovie", Height = 300, Width = 400};
             var settingsRepo = new SettingsRepository();
             var settings = settingsRepo.GetSettings();
+            if (settings == null)
+                return;
             movieControl.Url = settings.HomePageMovieUrl;
+            if (!string.IsNullOrEmpty(settings.CouponOfTheMonthUrl))
+                litCoupon.Text = "<a href='" + settings.CouponOfTheMonthUrl + "'>Check Here</a> To Download The Coupon Of The Month";
             pnlMovie.Controls.Add(movieControl);
         }
         
